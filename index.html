@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b2545">
+<title>APavan Perfil Metálico — Vigas de Aço NBR 8800</title>
+<style>
+:root{
+  --bg:#eef2f7; --card:#ffffff; --ink:#0f172a; --mut:#64748b; --line:#d8e0ec;
+  --acc:#0b63ce; --acc-d:#084a9c; --acc2:#0e9384; --ok:#15803d; --okbg:#e7f7ec;
+  --bad:#b42318; --badbg:#fdecea; --warn:#b45309; --warnbg:#fff6e5; --pre:#7c3aed; --prebg:#f3ecff;
+  --shadow:0 1px 2px rgba(15,23,42,.06),0 6px 20px rgba(15,23,42,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45;-webkit-text-size-adjust:100%}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.01em}
+button{font:inherit}
+input,select,textarea{font:inherit}
+.hdr{background:linear-gradient(135deg,#0b2545 0%,#123a6b 55%,#0e5b8a 100%);color:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(2,6,23,.25)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{width:42px;height:42px;border-radius:11px;flex:0 0 auto;background:linear-gradient(135deg,#22d3ee,#0ea5e9);display:grid;place-items:center;font-weight:900;color:#06263f;font-size:15px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+.brand h1{font-size:16px;line-height:1.15}
+.brand span{font-size:11.5px;opacity:.82;display:block}
+.hdr-actions{display:flex;flex-wrap:wrap;gap:6px}
+.hdr-actions button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);padding:7px 11px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:.15s;white-space:nowrap}
+.hdr-actions button:hover{background:rgba(255,255,255,.24)}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:10px 14px 0;background:transparent;scrollbar-width:thin;position:sticky;top:66px;z-index:40;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{height:5px}
+.tabs::-webkit-scrollbar-thumb{background:#c3cede;border-radius:4px}
+.tab{border:1px solid var(--line);background:#fff;color:var(--mut);cursor:pointer;padding:8px 13px;border-radius:9px 9px 0 0;font-size:12.5px;font-weight:600;white-space:nowrap;border-bottom:none;transition:.15s}
+.tab:hover{color:var(--acc)}
+.tab.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.tab .n{display:inline-block;opacity:.6;margin-right:4px;font-variant-numeric:tabular-nums}
+main{padding:0 14px 40px}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:14px;align-items:start}
+@media(max-width:1080px){.workspace{grid-template-columns:1fr}}
+.panels{min-width:0}
+.panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:0 12px 12px 12px;padding:16px;box-shadow:var(--shadow)}
+.panel.on{display:block}
+.panel > h2{font-size:15px;margin-bottom:4px}
+.panel > .sub{color:var(--mut);font-size:12.5px;margin-bottom:14px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:820px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld label{font-size:11.5px;font-weight:600;color:var(--mut);letter-spacing:.01em}
+.fld input,.fld select{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:#fbfcfe;color:var(--ink);width:100%;transition:.15s;font-variant-numeric:tabular-nums}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--acc);background:#fff;box-shadow:0 0 0 3px rgba(11,99,206,.12)}
+.fld .hint{font-size:10.5px;color:#94a3b8}
+fieldset{border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px;margin:0 0 14px}
+legend{font-size:12px;font-weight:700;color:var(--acc);padding:0 6px;text-transform:uppercase;letter-spacing:.04em}
+.chk{display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0}
+.chk input{width:16px;height:16px;accent-color:var(--acc)}
+.btn{border:1px solid var(--acc);background:var(--acc);color:#fff;padding:9px 16px;border-radius:9px;cursor:pointer;font-weight:700;font-size:13px;transition:.15s}
+.btn:hover{background:var(--acc-d);border-color:var(--acc-d)}
+.btn.sec{background:#fff;color:var(--acc)}
+.btn.sec:hover{background:#eef5ff}
+.btn.gr{background:var(--acc2);border-color:var(--acc2)}
+.btn.gr:hover{background:#0b7a6d;border-color:#0b7a6d}
+.row-btn{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;padding:2px 7px;border-radius:5px;text-transform:uppercase;vertical-align:middle}
+.tag.pre{background:var(--prebg);color:var(--pre)}
+.tag.norm{background:#e6f0fd;color:var(--acc)}
+.tag.ok{background:var(--okbg);color:var(--ok)}
+.tag.bad{background:var(--badbg);color:var(--bad)}
+.tag.wn{background:var(--warnbg);color:var(--warn)}
+.card{background:#f8fafd;border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
+.card h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--acc);margin-bottom:8px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:12.5px;padding:3px 0;border-bottom:1px dashed #e6ecf5}
+.kv:last-child{border-bottom:none}
+.kv .k{color:var(--mut)}
+.kv .v{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.kv .v.ok{color:var(--ok)} .kv .v.bad{color:var(--bad)} .kv .v.wn{color:var(--warn)}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;background:#0f172a;color:#e2e8f0;padding:8px 10px;border-radius:7px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+.formula .hl{color:#7dd3fc}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th{background:#f1f5fb;font-weight:700;color:var(--mut);font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;text-align:right}
+th:first-child,td:first-child{text-align:left}
+tbody tr:hover{background:#f8fafd}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px}
+.side{position:sticky;top:110px;display:flex;flex-direction:column;gap:12px}
+@media(max-width:1080px){.side{position:static}}
+.status{border-radius:12px;padding:14px;text-align:center;font-weight:900;font-size:17px;letter-spacing:.02em;border:2px solid;box-shadow:var(--shadow)}
+.status.ok{background:var(--okbg);border-color:#9bd9b0;color:var(--ok)}
+.status.bad{background:var(--badbg);border-color:#f0b0aa;color:var(--bad)}
+.status.wn{background:var(--warnbg);border-color:#f0cf9a;color:var(--warn)}
+.status small{display:block;font-size:11px;font-weight:600;opacity:.8;margin-top:4px;letter-spacing:0}
+canvas{width:100%;display:block;border-radius:8px}
+.note{font-size:11.5px;padding:9px 11px;border-radius:8px;border-left:3px solid;margin:10px 0}
+.note.i{background:#eef5ff;border-color:var(--acc);color:#1e3a5f}
+.note.w{background:var(--warnbg);border-color:var(--warn);color:#7c4a03}
+.note.e{background:var(--badbg);border-color:var(--bad);color:#7a1c12}
+.note.p{background:var(--prebg);border-color:var(--pre);color:#4c1d95}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--mut);margin-top:6px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.mem{font-size:12.5px;max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:16px;background:#fff}
+.mem h3{font-size:13px;color:var(--acc);margin:16px 0 6px;border-bottom:2px solid #e6ecf5;padding-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.mem h3:first-child{margin-top:0}
+.mem pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;background:#f5f8fc;padding:8px;border-radius:6px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+.mem table{font-size:11.5px}
+.mem ul{margin:6px 0 6px 18px;padding:0}
+.mem li{margin:2px 0}
+.mini{font-size:11px;color:var(--mut)}
+.spacer{height:10px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.badge-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="brand">
+    <div class="logo">AP</div>
+    <div>
+      <h1>APavan Perfil Metálico</h1>
+      <span>Pré-dimensionamento e verificação de vigas de aço — ABNT NBR 8800:2024 (versão corrigida)</span>
+    </div>
+  </div>
+  <div class="hdr-actions">
+    <button id="btnSalvar">💾 Salvar</button>
+    <button id="btnCarregar">📂 Carregar</button>
+    <button id="btnExport">⬇ JSON</button>
+    <button id="btnImport">⬆ Importar</button>
+    <button id="btnPrint">🖨 Memorial</button>
+    <input type="file" id="fileImport" accept=".json" style="display:none">
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main>
+<div class="workspace">
+  <div class="panels" id="panels">
+
+    <section class="panel on" id="tab-projeto">
+      <h2>1 · Dados do Projeto</h2>
+      <div class="sub">Identificação, geometria global e material.</div>
+      <fieldset>
+        <legend>Identificação</legend>
+        <div class="grid g2">
+          <div class="fld"><label>Nome do projeto</label><input id="p_nome" value="Edifício Residencial Alfa"></div>
+          <div class="fld"><label>Elemento estrutural</label><input id="p_elem" value="Viga de piso"></div>
+          <div class="fld"><label>Identificação da viga</label><input id="p_viga" value="V1"></div>
+          <div class="fld"><label>Pavimento</label><input id="p_pav" value="2º Pavimento"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Geometria e apoio</legend>
+        <div class="grid g4">
+          <div class="fld"><label>Vão livre L (m)</label><input id="p_vao" type="number" step="0.01" value="6.00"></div>
+          <div class="fld"><label>Número de vãos</label><input id="p_nvaos" type="number" step="1" value="1"></div>
+          <div class="fld"><label>Tipo de apoio</label>
+            <select id="p_apoio">
+              <option value="bi">Simplesmente apoiada (biapoiada)</option>
+              <option value="eng">Duplamente engastada</option>
+              <option value="eng-apoio">Engastada-apoiada</option>
+              <option value="balanco">Balanço</option>
+            </select>
+          </div>
+          <div class="fld"><label>Tipo de perfil</label>
+            <select id="p_tipoPerfil">
+              <option value="IH" selected>Perfil I / H laminado (Skylight)</option>
+              <option value="soldado">Perfil soldado Série VS (Skylight)</option>
+              <option value="L">Cantoneira de abas iguais (L)</option>
+              <option value="tubular">Perfil tubular</option>
+              <option value="generico">Genérico (propriedades fornecidas)</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Material (aço)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>Aço</label>
+            <select id="p_aco">
+              <option value="MR250">NBR 7007 MR250</option>
+              <option value="AR350">NBR 7007 AR350</option>
+              <option value="AR415">NBR 7007 AR415</option>
+              <option value="A36">ASTM A36</option>
+              <option value="A572-50">ASTM A572 Gr.50</option>
+              <option value="A992">ASTM A992</option>
+              <option value="custom">Personalizado</option>
+            </select>
+          </div>
+          <div class="fld"><label>fy (MPa)</label><input id="p_fy" type="number" step="1" value="345"></div>
+          <div class="fld"><label>fu (MPa)</label><input id="p_fu" type="number" step="1" value="450"></div>
+          <div class="fld"><label>E (MPa)</label><input id="p_E" type="number" step="1000" value="200000"></div>
+          <div class="fld"><label>G (MPa)</label><input id="p_G" type="number" step="1000" value="77000"></div>
+        </div>
+      </fieldset>
+      <div class="note i">
+        <b>Fluxo de cálculo:</b> Dados → Ações → Área de influência → Cargas lineares → Peso próprio → Combinações →
+        Reações → V(x) → M(x) → δ(x) → Inércia necessária → Seleção do perfil → Classificação → Flambagem local →
+        FLT → Flexão → Cisalhamento → ELS → Contraflecha → Travamento → Resultado final.
+      </div>
+    </section>
+
+    <section class="panel" id="tab-perfil">
+      <h2>2 · Perfil Metálico</h2>
+      <div class="sub">Selecione um perfil do catálogo ou informe as propriedades manualmente.</div>
+      <fieldset>
+        <legend>Seleção</legend>
+        <div class="grid g2">
+          <div class="fld"><label>Perfil do banco de dados</label><select id="pf_sel"></select></div>
+          <div class="fld"><label>Raio de concordância r (mm) — opcional</label><input id="pf_r" type="number" step="0.1" value="0"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Geometria (mm)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>d — altura total</label><input id="pf_d" type="number" step="0.1"></div>
+          <div class="fld"><label>bf — largura da mesa</label><input id="pf_bf" type="number" step="0.1"></div>
+          <div class="fld"><label>tf — espessura da mesa</label><input id="pf_tf" type="number" step="0.1"></div>
+          <div class="fld"><label>tw — espessura da alma</label><input id="pf_tw" type="number" step="0.1"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Propriedades da seção</legend>
+        <div class="grid g4">
+          <div class="fld"><label>A (cm²)</label><input id="pf_A" type="number" step="0.01"></div>
+          <div class="fld"><label>massa (kg/m)</label><input id="pf_massa" type="number" step="0.01"></div>
+          <div class="fld"><label>Ix (cm⁴)</label><input id="pf_Ix" type="number" step="1"></div>
+          <div class="fld"><label>Iy (cm⁴)</label><input id="pf_Iy" type="number" step="1"></div>
+          <div class="fld"><label>Wx (cm³)</label><input id="pf_Wx" type="number" step="0.1"></div>
+          <div class="fld"><label>Wy (cm³)</label><input id="pf_Wy" type="number" step="0.1"></div>
+          <div class="fld"><label>rx (cm)</label><input id="pf_rx" type="number" step="0.01"></div>
+          <div class="fld"><label>ry (cm)</label><input id="pf_ry" type="number" step="0.01"></div>
+          <div class="fld"><label>Zx (cm³)</label><input id="pf_Zx" type="number" step="0.1"></div>
+          <div class="fld"><label>Zy (cm³)</label><input id="pf_Zy" type="number" step="0.1"></div>
+          <div class="fld"><label>J (cm⁴)</label><input id="pf_J" type="number" step="0.01"></div>
+          <div class="fld"><label>Cw (cm⁶)</label><input id="pf_Cw" type="number" step="1"></div>
+        </div>
+        <div class="row-btn">
+          <button class="btn sec" id="btnRecalcGeo">Recalcular propriedades pela geometria</button>
+          <button class="btn sec" id="btnRecalcDer">Recalcular J, Cw, Zx, Zy</button>
+        </div>
+      </fieldset>
+      <div class="note w">
+        <b>Base de perfis:</b> catálogos Skylight (I/H laminados e soldados VS) e cantoneiras L de abas iguais.
+        Zx, Zy, J e Cw derivados da geometria quando o catálogo não os fornece explicitamente. Perfis L exigem
+        verificação específica de flexão biaxial — resultados indicativos.
+      </div>
+    </section>
+
+    <section class="panel" id="tab-acoes">
+      <h2>3 · Ações</h2>
+      <div class="sub">Ações permanentes e variáveis — superficiais (kN/m²) e lineares (kN/m).</div>
+      <fieldset>
+        <legend>Ações permanentes — superficiais (kN/m²)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>Peso próprio da laje</label><input id="a_laje" type="number" step="0.01" value="2.50"></div>
+          <div class="fld"><label>Revestimentos</label><input id="a_rev" type="number" step="0.01" value="0.80"></div>
+          <div class="fld"><label>Forro</label><input id="a_forro" type="number" step="0.01" value="0.20"></div>
+          <div class="fld"><label>Instalações</label><input id="a_inst" type="number" step="0.01" value="0.15"></div>
+          <div class="fld"><label>Outras permanentes</label><input id="a_outros" type="number" step="0.01" value="0.00"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Ações permanentes — lineares (kN/m)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>Paredes</label><input id="a_parede" type="number" step="0.01" value="0.00"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Ações variáveis — superficiais (kN/m²)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>Sobrecarga de utilização</label><input id="a_util" type="number" step="0.01" value="2.50"></div>
+          <div class="fld"><label>Sobrecarga de cobertura</label><input id="a_cob" type="number" step="0.01" value="0.00"></div>
+          <div class="fld"><label>Manutenção</label><input id="a_manut" type="number" step="0.01" value="0.00"></div>
+          <div class="fld"><label>Equipamentos</label><input id="a_equip" type="number" step="0.01" value="0.00"></div>
+          <div class="fld"><label>Cargas especiais</label><input id="a_espec" type="number" step="0.01" value="0.00"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Cargas concentradas (kN)</legend>
+        <div class="tbl-wrap">
+          <table id="tblPts">
+            <thead><tr><th>Descrição</th><th>Posição a (m)</th><th>Permanente (kN)</th><th>Variável (kN)</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="row-btn"><button class="btn sec" id="btnAddPt">+ Adicionar carga concentrada</button></div>
+      </fieldset>
+      <fieldset>
+        <legend>Peso próprio da viga</legend>
+        <label class="chk"><input type="checkbox" id="a_pp" checked> Considerar peso próprio do perfil</label>
+        <div class="mini" id="pp_info">—</div>
+      </fieldset>
+    </section>
+
+    <section class="panel" id="tab-ai">
+      <h2>4 · Área de Influência</h2>
+      <div class="sub">Transformação de ações superficiais em cargas lineares sobre a viga.</div>
+      <fieldset>
+        <legend>Definição geométrica</legend>
+        <div class="grid g3">
+          <div class="fld"><label>Posição da viga</label>
+            <select id="ai_pos"><option value="interna">Interna</option><option value="borda">Borda</option></select>
+          </div>
+          <div class="fld"><label>Espaçamento à esquerda (m)</label><input id="ai_be" type="number" step="0.01" value="3.00"></div>
+          <div class="fld"><label>Espaçamento à direita (m)</label><input id="ai_bd" type="number" step="0.01" value="3.00"></div>
+        </div>
+        <div class="grid g3" style="margin-top:10px">
+          <div class="fld"><label>Largura de influência calculada (m)</label><input id="ai_bwcalc" readonly></div>
+          <div class="fld"><label>Largura de influência adotada (m)</label><input id="ai_bw" type="number" step="0.01" value="3.00"></div>
+          <div class="fld"><label>Comprimento da viga (m)</label><input id="ai_L" readonly></div>
+        </div>
+      </fieldset>
+      <div class="card" id="ai_res"></div>
+      <div class="note p">
+        <b>PRÉ-DIMENSIONAMENTO:</b> vigas internas: <code>AI = (be/2 + bd/2) × L</code>; vigas de borda: apenas a
+        parcela correspondente. Procedimento geométrico, independente da versão da norma.
+      </div>
+    </section>
+
+    <section class="panel" id="tab-analise">
+      <h2>5 · Análise Estrutural</h2>
+      <div class="sub">Combinações, reações, diagramas de cortante, momento e flecha.</div>
+      <fieldset>
+        <legend>Combinações (NBR 8681 / NBR 8800)</legend>
+        <div class="grid g4">
+          <div class="fld"><label>γg (permanentes)</label><input id="c_gg" type="number" step="0.01" value="1.25"></div>
+          <div class="fld"><label>γq (variáveis)</label><input id="c_gq" type="number" step="0.01" value="1.50"></div>
+          <div class="fld"><label>ψ1</label><input id="c_psi1" type="number" step="0.05" value="0.40"></div>
+          <div class="fld"><label>ψ2</label><input id="c_psi2" type="number" step="0.05" value="0.30"></div>
+        </div>
+      </fieldset>
+      <div class="card" id="an_comb"></div>
+      <div class="card" id="an_reac"></div>
+      <div class="split">
+        <div><h3 style="font-size:13px;color:var(--acc);margin-bottom:6px">Diagrama de cortante V(x) <span class="tag norm">kN</span></h3><canvas id="cv_V" height="230"></canvas></div>
+        <div><h3 style="font-size:13px;color:var(--acc);margin-bottom:6px">Diagrama de momento M(x) <span class="tag norm">kN·m</span></h3><canvas id="cv_M" height="230"></canvas></div>
+      </div>
+      <div style="margin-top:14px"><h3 style="font-size:13px;color:var(--acc);margin-bottom:6px">Linha elástica δ(x) <span class="tag norm">mm</span></h3><canvas id="cv_d" height="230"></canvas></div>
+    </section>
+
+    <section class="panel" id="tab-pre">
+      <h2>6 · Pré-dimensionamento</h2>
+      <div class="sub">Altura indicativa, inércia necessária e seleção do perfil.</div>
+      <fieldset>
+        <legend>Limite de flecha</legend>
+        <div class="grid g3">
+          <div class="fld"><label>Limite para deslocamento total</label>
+            <select id="pre_lim">
+              <option value="180">L/180</option><option value="250" selected>L/250</option>
+              <option value="300">L/300</option><option value="350">L/350</option>
+              <option value="400">L/400</option><option value="500">L/500</option>
+              <option value="custom">Personalizado</option>
+            </select>
+          </div>
+          <div class="fld"><label>Valor personalizado (L/n)</label><input id="pre_limc" type="number" step="1" value="250"></div>
+          <div class="fld"><label>Limite para ações variáveis</label>
+            <select id="pre_limv">
+              <option value="180">L/180</option><option value="250">L/250</option>
+              <option value="300">L/300</option><option value="350" selected>L/350</option>
+              <option value="400">L/400</option><option value="500">L/500</option>
+              <option value="custom">Personalizado</option>
+            </select>
+          </div>
+          <div class="fld"><label>Valor personalizado (L/n)</label><input id="pre_limvc" type="number" step="1" value="350"></div>
+        </div>
+      </fieldset>
+      <div class="card" id="pre_altura"></div>
+      <div class="card" id="pre_inercia"></div>
+      <div class="row-btn">
+        <button class="btn gr" id="btnFind">🔍 ENCONTRAR PERFIL</button>
+        <button class="btn sec" id="btnLimparBusca">Limpar resultados da busca</button>
+      </div>
+      <div id="pre_busca"></div>
+    </section>
+
+    <section class="panel" id="tab-flexao">
+      <h2>7 · Flexão</h2>
+      <div class="sub">Classificação da seção, FLM, FLA e FLT — NBR 8800 Anexo G.</div>
+      <div class="card" id="fx_class"></div>
+      <div class="card" id="fx_res"></div>
+    </section>
+
+    <section class="panel" id="tab-cis">
+      <h2>8 · Cisalhamento</h2>
+      <div class="sub">Verificação da alma — NBR 8800 item 5.4.</div>
+      <div class="card" id="cs_res"></div>
+    </section>
+
+    <section class="panel" id="tab-estab">
+      <h2>9 · Estabilidade Lateral com Torção</h2>
+      <div class="sub">Lp, Lr, Mcr, Cb e comprimento máximo sem travamento.</div>
+      <fieldset>
+        <legend>Parâmetros</legend>
+        <div class="grid g3">
+          <div class="fld"><label>Comprimento destravado Lb (m)</label><input id="es_Lb" type="number" step="0.01" value="6.00"></div>
+          <div class="fld"><label>Fator Cb</label>
+            <select id="es_cbmode">
+              <option value="auto" selected>Calcular pelo diagrama de momento</option>
+              <option value="manual">Informar manualmente</option>
+              <option value="1">Adotar Cb = 1,00</option>
+            </select>
+          </div>
+          <div class="fld"><label>Cb manual</label><input id="es_cb" type="number" step="0.01" value="1.00"></div>
+        </div>
+      </fieldset>
+      <div class="card" id="es_res"></div>
+      <canvas id="cv_Mrd" height="260"></canvas>
+      <div class="legend">
+        <span><i style="background:#0b63ce"></i>Mrd × Lb</span>
+        <span><i style="background:#c2410c"></i>Msd</span>
+        <span><i style="background:#0e9384;height:0;border-top:2px dashed #0e9384"></i>Mpl</span>
+        <span><i style="background:#7c3aed;height:0;border-top:2px dashed #7c3aed"></i>Mr</span>
+      </div>
+    </section>
+
+    <section class="panel" id="tab-flecha">
+      <h2>10 · Estado Limite de Serviço</h2>
+      <div class="sub">Flecha, limites e contraflecha.</div>
+      <div class="card" id="fl_res"></div>
+      <div class="card" id="fl_camb"></div>
+      <canvas id="cv_dL" height="250"></canvas>
+    </section>
+
+    <section class="panel" id="tab-vib">
+      <h2>11 · Vibração (preliminar)</h2>
+      <div class="sub">Frequência natural aproximada da viga.</div>
+      <div class="card" id="vb_res"></div>
+      <div class="note w">A análise dinâmica completa de pisos pode exigir modelo estrutural mais abrangente. Este módulo é apenas indicativo.</div>
+    </section>
+
+    <section class="panel" id="tab-comp">
+      <h2>12 · Comparação de Perfis</h2>
+      <div class="sub">Alternativas do banco que atendem aos critérios definidos.</div>
+      <div class="tbl-wrap" id="cp_tbl"></div>
+      <div class="spacer"></div>
+      <h3 style="font-size:13px;color:var(--acc);margin-bottom:6px">Tabela Vão × Carga máxima admissível (kN/m)</h3>
+      <div class="tbl-wrap" id="cp_vc"></div>
+      <div class="spacer"></div>
+      <h3 style="font-size:13px;color:var(--acc);margin-bottom:6px">Gráfico Carga admissível × Vão</h3>
+      <canvas id="cv_cv" height="260"></canvas>
+    </section>
+
+    <section class="panel" id="tab-mem">
+      <h2>13 · Memorial de Cálculo</h2>
+      <div class="sub">Documento completo com fórmulas, dados, resultados e referências.</div>
+      <div class="row-btn">
+        <button class="btn" id="btnGerarMem">Gerar / Atualizar Memorial</button>
+        <button class="btn sec" id="btnPrintMem">🖨 Imprimir / PDF</button>
+      </div>
+      <div class="mem" id="memOut"><span class="mini">Clique em "Gerar / Atualizar Memorial".</span></div>
+    </section>
+
+  </div>
+
+  <aside class="side">
+    <div class="status wn" id="status">— VERIFICANDO —<small>aguardando dados</small></div>
+    <div class="card">
+      <h4>Painel Principal</h4>
+      <div class="kv"><span class="k">Perfil</span><span class="v" id="sb_perfil">—</span></div>
+      <div class="kv"><span class="k">Vão L</span><span class="v" id="sb_vao">—</span></div>
+      <div class="kv"><span class="k">Carga ELU qd</span><span class="v" id="sb_qd">—</span></div>
+      <div class="kv"><span class="k">Msd</span><span class="v" id="sb_msd">—</span></div>
+      <div class="kv"><span class="k">Mrd</span><span class="v" id="sb_mrd">—</span></div>
+      <div class="kv"><span class="k">Vsd</span><span class="v" id="sb_vsd">—</span></div>
+      <div class="kv"><span class="k">Vrd</span><span class="v" id="sb_vrd">—</span></div>
+      <div class="kv"><span class="k">δ calc.</span><span class="v" id="sb_d">—</span></div>
+      <div class="kv"><span class="k">δ lim.</span><span class="v" id="sb_dlim">—</span></div>
+      <div class="kv"><span class="k">Lb</span><span class="v" id="sb_lb">—</span></div>
+      <div class="kv"><span class="k">Mcr</span><span class="v" id="sb_mcr">—</span></div>
+      <div class="kv"><span class="k">η máx</span><span class="v" id="sb_eta">—</span></div>
+    </div>
+    <div class="card">
+      <h4>Utilização das verificações</h4>
+      <canvas id="cv_bar" height="230"></canvas>
+      <div class="mini" style="margin-top:6px">η = solicitação / resistência (≤ 1,00 atende)</div>
+    </div>
+    <div class="card">
+      <h4>Mensagens</h4>
+      <div id="msgs" class="mini">—</div>
+    </div>
+  </aside>
+</div>
+</main>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   APAVAN PERFIL METÁLICO — motor de cálculo NBR 8800:2024
+   Catálogos: Skylight I/H laminados, Skylight Soldados VS, Cantoneiras L
+   ========================================================================= */
+
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+function num(v, def){
+  if(v===null||v===undefined) return def;
+  const x = parseFloat(String(v).replace(/\s/g,'').replace(',', '.'));
+  return Number.isFinite(x) ? x : def;
+}
+function fx(v, d){
+  if(!Number.isFinite(v)) return '—';
+  d = (d===undefined)?2:d;
+  return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+}
+function clamp(v,a,b){ return Math.min(b, Math.max(a,v)); }
+
+/* ----------------- MATERIAIS ----------------- */
+const MATERIAIS = {
+  'MR250'  :{fy:250,fu:400}, 'AR350':{fy:350,fu:485}, 'AR415':{fy:415,fu:520},
+  'A36'    :{fy:250,fu:400}, 'A572-50':{fy:345,fu:450}, 'A992':{fy:345,fu:450},
+  'custom' :null
+};
+
+/* =========================================================================
+   BANCO DE PERFIS
+   Formato: [nome, massa(kg/m), d(mm), bf(mm), tf(mm), tw(mm), A(cm²),
+             Ix(cm⁴), Iy(cm⁴), Wx(cm³), Wy(cm³), rx(cm), ry(cm), J(cm⁴), Cw(cm⁶)]
+   ========================================================================= */
+
+/* --- I / H LAMINADOS — Skylight --- */
+const PERFIS_IH_LAM = [
+['W 150 x 13,0',13.0,148,100,4.3,4.9,16.6,635,80.0,85.8,16.4,6.18,2.22,1.72,4181],
+['W 150 x 18,0',18.0,153,102,5.8,5.1,23.9,919,123.9,122.8,24.7,6.34,2.32,2.55,6683],
+['W 150 x 22,5',22.5,152,152,5.8,6.6,28.9,1290,1219,161.7,161.6,6.51,6.30,4.10,20417],
+['W 160 x 24,0',24.0,160,102,10.6,6.3,30.5,1395,184,173.0,36.0,6.73,2.45,8.23,30227],
+['W 200 x 15,0',15.0,200,100,4.3,5.2,19.0,1305,88.5,130.5,17.4,8.50,2.12,1.77,8222],
+['W 200 x 19,3',19.3,203,102,5.8,6.5,24.6,1686,144.9,166.1,22.7,8.32,2.12,4.75,11098],
+['W 200 x 22,5',22.5,206,102,6.2,8.0,29.0,2020,149.7,196.1,22.9,8.32,2.12,9.62,13268],
+['W 200 x 26,6',26.6,207,133,5.8,8.4,34.0,2523,372.3,242.2,49.6,9.17,2.92,13.40,32477],
+['W 200 x 31,3',31.3,210,134,6.4,10.2,40.0,3101,387.6,294.6,52.3,8.94,2.94,17.40,40282],
+['W 200 x 35,9',35.9,201,165,6.2,10.2,45.7,3428,674,304.0,61.0,8.60,3.02,42.65,69902],
+['W 200 x 41,7',41.7,205,166,7.2,11.8,53.4,4014,776.6,409.7,83.7,8.66,3.29,69.50,103042],
+['W 200 x 46,1',46.1,203,203,7.2,11.0,58.6,4543,1540,447.6,151.7,8.81,5.13,96.20,163613],
+['W 200 x 52,0',52.0,206,204,7.9,12.6,66.1,5288,1784,514.8,174.9,8.95,5.19,171.1,199388],
+['W 200 x 53,0',53.0,204,207,11.3,11.3,67.7,4881,1673,477.7,161.7,8.49,4.97,62.10,233413],
+['W 200 x 59,0',59.0,210,205,9.1,14.2,75.3,6188,2076,589.4,202.5,9.07,5.25,171.2,249976],
+['W 200 x 71,0',71.0,216,206,10.2,17.4,91.0,7639,2535,707.5,246.1,9.16,5.28,192.8,270648],
+['W 200 x 86,0',86.0,222,209,13.0,20.6,110.2,9447,3231,850.7,309.1,9.26,5.42,251.5,375000],
+['W 250 x 17,9',17.9,251,101,4.8,5.3,22.9,2286,91.6,182.2,18.1,9.99,2.00,1.72,13735],
+['W 250 x 22,3',22.3,254,102,6.9,5.8,28.4,2893,108.8,227.9,21.3,10.10,1.96,3.77,18389],
+['W 250 x 25,3',25.3,257,102,6.1,6.4,32.2,3400,107.4,264.6,21.0,10.28,1.83,4.66,22959],
+['W 250 x 28,4',28.4,260,102,8.4,6.4,36.1,3864,140.5,297.3,27.5,10.34,1.97,9.55,33607],
+['W 250 x 32,7',32.7,258,146,6.1,9.1,41.6,4250,482.4,329.3,66.1,10.11,3.41,10.03,84978],
+['W 250 x 38,5',38.5,262,147,6.6,11.2,49.1,5269,605.7,402.3,82.4,10.36,3.51,19.44,104448],
+['W 250 x 44,8',44.8,266,148,7.6,13.0,57.0,6287,758.8,472.7,102.5,10.50,3.65,31.47,129063],
+['W 250 x 62,0',62.0,246,256,10.5,7.7,79.0,6375,3051,518.3,238.6,8.98,6.21,44.90,213386],
+['W 250 x 73,0',73.0,253,254,8.6,14.2,92.9,8847,3744,699.4,294.8,9.76,6.35,53.20,272139],
+['W 250 x 80,0',80.0,256,255,9.4,15.6,102.0,9916,4043,774.7,317.1,9.86,6.30,70.20,312277],
+['W 250 x 85,0',85.0,254,254,14.4,14.4,108.0,10272,4218,808.9,332.1,9.75,6.25,74.30,322710],
+['W 250 x 89,0',89.0,260,256,10.7,17.3,113.0,11415,4841,877.6,378.2,10.05,6.55,82.40,352816],
+['W 250 x 101,0',101.0,264,257,11.9,19.6,129.0,13162,5549,994.6,431.8,10.10,6.56,105.6,401320],
+['W 250 x 115,0',115.0,269,259,13.5,22.1,146.0,14907,6333,1105.9,489.4,10.10,6.59,126.6,461922],
+['W 310 x 21,0',21.0,303,101,5.7,4.3,26.8,3973,95.6,262.2,19.0,12.18,1.89,1.52,27538],
+['W 310 x 23,8',23.8,305,101,5.1,6.7,30.3,4338,117.2,284.5,23.0,11.96,1.97,3.00,30113],
+['W 310 x 28,3',28.3,308,102,7.4,5.6,36.0,5481,131.1,356.0,25.7,12.34,1.91,4.95,37483],
+['W 310 x 32,7',32.7,313,102,8.6,6.6,41.6,6510,172.5,415.9,33.8,12.51,2.04,9.94,44564],
+['W 310 x 38,7',38.7,310,165,5.8,9.4,49.3,7513,720,484.7,87.4,12.34,3.82,15.54,106993],
+['W 310 x 44,5',44.5,313,166,6.6,11.2,56.7,8520,838.8,544.7,101.0,12.26,3.85,23.50,122936],
+['W 310 x 52,0',52.0,317,167,7.6,13.2,66.3,9898,1002,624.5,120.0,12.21,3.88,40.70,144058],
+['W 310 x 79,0',79.0,306,254,11.0,9.4,101.0,16267,3046,1063.1,240.0,12.70,5.50,60.60,270728],
+['W 310 x 93,0',93.0,303,304,13.1,10.6,119.0,19776,5106,1304.0,335.5,12.89,6.55,135.3,501836],
+['W 310 x 97,0',97.0,308,305,9.9,15.4,123.0,22247,5295,1443.9,347.0,13.44,6.55,109.2,554148],
+['W 310 x 107,0',107.0,311,306,10.9,17.7,136.0,24539,5687,1579.0,372.0,13.44,6.47,142.9,574161],
+['W 310 x 110,0',110.0,308,310,15.4,15.4,140.0,24230,6268,1572.7,404.0,13.16,6.69,150.5,635220],
+['W 310 x 117,0',117.0,314,307,11.7,21.0,149.0,27053,6878,1723.0,448.0,13.48,6.80,196.3,674801],
+['W 310 x 125,0',125.0,312,312,17.4,17.4,159.0,27636,8256,1771.5,529.0,13.18,7.21,183.9,698242],
+['W 310 x 129,0',129.0,312,312,17.4,17.4,164.0,28421,8400,1821.0,537.0,13.18,7.21,184.6,720438],
+['W 360 x 32,9',32.9,349,127,8.5,5.8,41.9,8490,292,486.8,46.0,14.24,2.64,5.66,72285],
+['W 360 x 39,0',39.0,353,128,10.7,6.5,49.7,10121,369.7,573.4,57.8,14.27,2.73,11.15,90652],
+['W 360 x 44,0',44.0,352,127,10.7,6.9,56.0,12101,367.5,688.5,57.9,14.70,2.56,13.24,91421],
+['W 360 x 51,0',51.0,355,171,11.6,7.2,64.8,14222,801.8,801.2,93.7,14.82,3.52,24.15,155760],
+['W 360 x 57,8',57.8,358,172,13.0,7.9,73.6,16030,900.4,896.5,104.7,14.76,3.50,38.60,170099],
+['W 360 x 64,0',64.0,347,203,13.5,7.7,81.5,17905,1188,1031.5,117.0,14.83,3.82,41.70,232016],
+['W 360 x 72,0',72.0,350,204,13.1,8.6,91.3,20129,1325,1152.5,129.9,14.85,3.81,52.30,262337],
+['W 360 x 79,0',79.0,354,205,16.8,9.4,100.0,22313,1518,1258.9,148.4,14.95,3.90,76.70,294402],
+['W 360 x 91,0',91.0,355,254,15.4,9.5,116.0,25545,2380,1440.0,187.0,14.85,4.53,94.60,425304],
+['W 360 x 101,0',101.0,357,255,16.4,10.5,129.0,28551,2641,1599.5,207.0,14.88,4.52,113.0,453277],
+['W 360 x 110,0',110.0,360,256,19.9,11.4,140.0,31217,3111,1734.5,243.0,14.94,4.72,204.3,486358],
+['W 360 x 122,0',122.0,363,257,21.8,13.0,155.0,35368,3512,1949.0,273.0,15.10,4.76,355.0,519138],
+['W 410 x 38,8',38.8,403,140,8.8,6.4,49.4,12372,405.2,615.9,58.0,15.83,2.87,8.23,118130],
+['W 410 x 46,1',46.1,407,140,11.2,6.9,58.7,15610,517,766.6,73.9,16.29,2.97,18.82,150210],
+['W 410 x 53,0',53.0,403,177,10.9,7.7,67.7,18566,737.5,921.7,83.5,16.55,3.30,23.10,196840],
+['W 410 x 60,0',60.0,407,178,12.8,7.7,76.2,21623,845.1,1061.9,95.2,16.84,3.33,44.00,223827],
+['W 410 x 67,0',67.0,410,179,14.4,8.4,85.1,24504,981.9,1196.0,110.0,16.96,3.39,67.00,257158],
+['W 410 x 75,0',75.0,413,180,16.0,9.7,95.4,27664,1116,1339.6,124.0,17.03,3.42,107.9,290216],
+['W 410 x 85,0',85.0,417,181,18.2,10.9,108.0,31642,1305,1515.7,144.0,17.12,3.47,194.9,334270],
+['W 410 x 100,0',100.0,415,260,10.0,16.9,127.0,39670,3714,1912.0,286.0,17.67,5.41,122.3,661106],
+['W 460 x 52,0',52.0,450,153,10.8,7.6,66.4,21191,648.2,942.0,84.7,17.86,3.12,20.17,207416],
+['W 460 x 60,0',60.0,455,153,12.7,8.0,76.3,25191,762.1,1107.2,99.6,18.18,3.16,39.60,241500],
+['W 460 x 68,0',68.0,459,154,15.4,8.8,86.9,29706,935,1294.3,121.4,18.49,3.28,77.80,289404],
+['W 460 x 74,0',74.0,457,190,14.5,9.0,94.8,33339,1459,1461.7,153.0,18.72,3.90,69.40,393042],
+['W 460 x 82,0',82.0,460,191,16.0,10.0,105.0,36983,1672,1602.0,174.0,18.80,4.01,111.7,426771],
+['W 460 x 89,0',89.0,463,192,17.7,10.5,114.0,41037,1858,1772.6,193.0,18.98,4.05,164.3,464725],
+['W 460 x 97,0',97.0,466,193,19.4,11.4,124.0,45491,2019,1956.6,209.0,19.14,4.03,240.2,503693],
+['W 460 x 106,0',106.0,469,194,20.6,12.6,135.0,49103,2224,2093.0,229.0,19.09,4.06,323.0,541770],
+['W 530 x 66,0',66.0,525,165,11.4,8.9,84.0,36890,863,1403.3,104.5,20.95,3.20,39.80,348390],
+['W 530 x 72,0',72.0,524,164,10.9,10.2,91.5,37274,907.8,1413.3,110.8,20.18,3.15,52.90,361430],
+['W 530 x 74,0',74.0,529,166,13.6,9.7,94.6,41075,1005,1551.0,121.5,20.84,3.26,56.10,378880],
+['W 530 x 82,0',82.0,528,209,13.2,10.0,104.0,47062,2034,1782.5,194.8,21.28,4.42,74.40,567830],
+['W 530 x 85,0',85.0,535,166,16.5,10.3,108.0,47552,1226,1773.8,147.5,20.94,3.36,75.30,463450],
+['W 530 x 92,0',92.0,533,209,15.6,10.2,117.0,53681,2287,2014.0,218.8,21.45,4.42,108.2,617550],
+['W 530 x 101,0',101.0,536,210,17.4,10.9,129.0,61058,2564,2279.4,244.2,21.76,4.46,171.4,665312],
+['W 530 x 109,0',109.0,539,211,18.5,11.6,139.0,66627,2836,2472.0,268.7,21.88,4.52,235.6,704813],
+['W 530 x 123,0',123.0,545,213,21.5,13.0,157.0,76232,3405,2798.0,320.0,22.05,4.66,388.8,782531],
+['W 610 x 101,0',101.0,603,228,14.9,10.5,129.0,76343,2940,2531.4,258.0,24.34,4.77,91.80,755232],
+['W 610 x 113,0',113.0,608,228,17.3,11.2,144.0,85451,3433.4,2810.9,301.2,24.38,4.89,153.6,879078],
+['W 610 x 125,0',125.0,612,229,19.6,11.9,159.0,98623,3964.7,3223.0,346.2,24.90,4.99,265.3,988090],
+['W 610 x 140,0',140.0,617,230,22.1,13.1,178.0,109423,4516.8,3546.3,392.5,24.79,5.04,417.2,1061862],
+['W 610 x 155,0',155.0,611,324,12.7,19.0,197.0,129816,13674.4,4249.1,844.6,25.66,8.33,209.7,2076516],
+['W 610 x 174,0',174.0,616,325,14.0,21.6,222.0,147794,15393.1,4798.5,947.1,25.80,8.32,353.5,2261650],
+['W 610 x 217,0',217.0,628,328,18.2,27.7,277.0,186308,19956.5,5934.8,1216.8,25.94,8.49,770.4,2744267]
+];
+
+/* --- SOLDADOS SÉRIE VS — Skylight --- */
+const PERFIS_VS = [
+['VS 200 x 19',19.0,200,120,6.3,4.75,24.4,1678,183,168,30.5,8.30,2.74,3.17,8791],
+['VS 200 x 22',22.0,200,120,8.0,4.75,27.9,1825,243,183,40.5,8.09,2.95,7.10,11758],
+['VS 200 x 25',25.0,200,125,9.5,4.75,31.4,2305,230,230,37.0,8.57,2.71,10.60,11537],
+['VS 200 x 30',30.0,200,130,4.75,8.0,37.4,1797,180,180,25.3,6.93,2.20,4.62,7484],
+['VS 200 x 30 (2)',30.0,200,130,8.0,4.75,37.4,2185,216,216,31.5,7.64,2.40,6.32,9523],
+['VS 200 x 36',36.0,200,130,9.5,4.75,45.9,2477,248,248,35.1,7.34,2.32,11.32,10549],
+['VS 200 x 41',41.0,200,140,6.3,4.75,52.2,2616,422,216,49.9,7.08,2.84,12.23,18218],
+['VS 200 x 44',44.0,200,140,8.0,4.75,55.9,2927,503,242,56.5,7.24,3.00,19.22,19993],
+['VS 200 x 48',48.0,200,140,9.5,4.75,60.7,3170,533,263,60.8,7.23,2.96,29.17,20944],
+['VS 250 x 21',21.0,250,120,6.3,4.75,26.5,2776,222,222,30.2,10.23,2.89,2.34,23137],
+['VS 250 x 24',24.0,250,120,8.0,4.75,30.5,2960,275,236,37.9,9.85,3.00,4.71,24764],
+['VS 250 x 27',27.0,250,125,9.5,4.75,33.9,3573,285,285,41.7,10.26,2.90,7.94,26801],
+['VS 250 x 28',28.0,250,120,4.75,8.0,34.9,2950,259,265,29.7,9.19,2.72,4.24,25452],
+['VS 250 x 32',32.0,250,120,6.3,8.0,39.9,3497,305,296,35.4,9.36,2.77,9.19,28783],
+['VS 250 x 37',37.0,250,120,8.0,8.0,45.7,4036,347,341,40.7,9.40,2.76,16.97,33339],
+['VS 250 x 42',42.0,250,130,4.75,10.0,51.2,4356,431,354,47.1,9.23,2.90,16.56,40544],
+['VS 250 x 48',48.0,250,130,6.3,10.0,58.1,5010,489,409,53.1,9.29,2.90,31.30,45955],
+['VS 250 x 54',54.0,250,140,4.75,12.5,64.7,5804,622,467,61.0,9.47,3.10,29.86,59902],
+['VS 300 x 26',26.0,300,120,6.3,4.75,30.6,4319,248,288,29.6,11.88,2.85,3.18,41583],
+['VS 300 x 29',29.0,300,120,8.0,4.75,34.1,4569,297,305,34.7,11.55,2.95,6.33,44413],
+['VS 300 x 33',33.0,300,125,9.5,4.75,38.9,5588,319,373,38.2,11.98,2.87,11.66,48085],
+['VS 300 x 35',35.0,300,120,6.3,6.3,43.1,5354,305,357,33.8,11.10,2.66,6.57,47481],
+['VS 300 x 41',41.0,300,120,8.0,6.3,49.9,6079,358,405,39.0,11.04,2.68,12.51,53784],
+['VS 300 x 48',48.0,300,120,9.5,6.3,59.0,6980,416,465,44.8,10.88,2.66,24.35,61169],
+['VS 300 x 46',46.0,300,130,6.3,8.0,56.5,7493,581,500,54.5,11.52,3.21,21.63,94364],
+['VS 300 x 53',53.0,300,140,6.3,10.0,67.0,9129,798,609,70.2,11.68,3.45,31.30,139465],
+['VS 300 x 61',61.0,300,140,8.0,10.0,77.0,10212,907,681,78.4,11.52,3.43,53.14,155205],
+['VS 300 x 68',68.0,300,140,10.0,10.0,85.8,10968,992,731,83.2,11.31,3.40,95.40,167742],
+['VS 350 x 35',35.0,350,200,6.3,4.75,44.9,9827,422,561,42.2,14.79,3.07,7.10,81733],
+['VS 350 x 39',39.0,350,200,8.0,4.75,50.0,10334,479,590,47.9,14.37,3.09,14.50,84048],
+['VS 350 x 45',45.0,350,200,9.5,4.75,57.4,12064,549,689,54.9,14.49,3.09,25.38,90077],
+['VS 350 x 42',42.0,350,200,5.3,7.3,53.8,12491,517,714,51.7,15.24,3.10,12.10,96597],
+['VS 350 x 47',47.0,350,200,6.3,7.3,60.0,13707,561,783,56.1,15.10,3.06,19.83,100878],
+['VS 350 x 53',53.0,350,200,8.0,7.3,68.0,15203,631,869,63.1,14.94,3.04,36.30,108578],
+['VS 350 x 60',60.0,350,200,9.5,7.3,77.0,16699,690,954,69.0,14.72,2.99,56.20,115732],
+['VS 350 x 57',57.0,350,200,6.3,10.0,72.0,17110,799,978,80.0,15.42,3.33,52.30,135951],
+['VS 350 x 65',65.0,350,200,8.0,10.0,82.0,18784,914,1073,91.0,15.13,3.34,87.20,148357],
+['VS 350 x 74',74.0,350,200,10.0,10.0,94.0,20435,1012,1168,101.2,14.74,3.28,158.4,160408],
+['VS 400 x 42',42.0,400,200,6.3,4.75,53.6,16029,512,801,51.2,17.29,3.09,8.60,144235],
+['VS 400 x 47',47.0,400,200,8.0,4.75,59.8,16846,579,842,57.9,16.79,3.11,18.00,148342],
+['VS 400 x 54',54.0,400,200,9.5,4.75,68.5,19626,663,981,66.3,16.92,3.11,30.50,159332],
+['VS 400 x 50',50.0,400,200,5.3,7.3,64.0,20927,636,1046,63.6,18.09,3.15,15.60,183228],
+['VS 400 x 55',55.0,400,200,6.3,7.3,71.0,22967,690,1148,69.0,17.99,3.12,25.00,191824],
+['VS 400 x 63',63.0,400,200,8.0,7.3,80.0,25474,774,1274,77.4,17.84,3.11,45.20,206862],
+['VS 400 x 71',71.0,400,200,9.5,7.3,90.0,27927,847,1396,84.7,17.60,3.06,71.30,220419],
+['VS 400 x 68',68.0,400,300,6.3,6.3,86.5,29491,1494,1475,149.4,18.47,4.16,45.30,314260],
+['VS 400 x 78',78.0,400,300,8.0,6.3,99.5,33689,1716,1684,171.6,18.40,4.15,74.70,352232],
+['VS 400 x 88',88.0,400,300,9.5,6.3,112.0,37784,1926,1889,192.6,18.36,4.15,119.6,383931],
+['VS 400 x 84',84.0,400,300,6.3,10.0,107.0,40381,2011,2019,201.1,19.42,4.33,105.0,415680],
+['VS 400 x 97',97.0,400,300,8.0,10.0,124.0,46040,2296,2302,229.6,19.27,4.30,168.6,459506],
+['VS 400 x 110',110.0,400,300,10.0,10.0,140.0,50996,2562,2550,256.2,19.09,4.28,289.7,498396],
+['VS 450 x 54',54.0,450,200,6.3,4.75,68.7,23473,637,1043,63.7,18.48,3.04,10.40,255994],
+['VS 450 x 60',60.0,450,200,8.0,4.75,76.4,24718,723,1099,72.3,17.99,3.07,21.60,263375],
+['VS 450 x 68',68.0,450,200,9.5,4.75,86.9,28705,826,1276,82.6,18.18,3.08,36.80,282295],
+['VS 450 x 63',63.0,450,200,5.3,7.3,80.0,30295,797,1346,79.7,19.46,3.16,19.10,316165],
+['VS 450 x 70',70.0,450,200,6.3,7.3,89.3,33398,869,1484,86.9,19.34,3.12,30.60,331465],
+['VS 450 x 80',80.0,450,200,8.0,7.3,102.0,37543,980,1669,98.0,19.20,3.10,55.80,359077],
+['VS 450 x 90',90.0,450,200,9.5,7.3,114.0,41432,1076,1842,107.6,19.01,3.06,89.40,383752],
+['VS 450 x 86',86.0,450,300,6.3,6.3,110.0,44629,1924,1984,192.4,20.13,4.18,55.20,535202],
+['VS 450 x 98',98.0,450,300,8.0,6.3,125.0,50645,2197,2251,219.7,20.12,4.19,89.80,592711],
+['VS 450 x 110',110.0,450,300,9.5,6.3,140.0,56376,2444,2505,244.4,20.02,4.16,142.3,635210],
+['VS 450 x 105',105.0,450,300,6.3,10.0,134.0,60300,2561,2680,256.1,21.18,4.36,125.6,702525],
+['VS 450 x 122',122.0,450,300,8.0,10.0,155.0,69264,2954,3078,295.4,21.15,4.36,203.0,784208],
+['VS 450 x 140',140.0,450,300,10.0,10.0,178.0,77552,3322,3447,332.2,20.87,4.32,350.2,855144],
+['VS 500 x 61',61.0,500,200,6.3,4.75,78.2,30757,718,1230,71.8,19.84,3.03,11.70,365919],
+['VS 500 x 68',68.0,500,200,8.0,4.75,86.9,32461,813,1298,81.3,19.33,3.06,24.40,377252],
+['VS 500 x 77',77.0,500,200,9.5,4.75,98.8,37711,930,1508,93.0,19.54,3.07,41.60,405723],
+['VS 500 x 73',73.0,500,200,5.3,7.3,92.0,39753,898,1590,89.8,20.79,3.13,21.70,450110],
+['VS 500 x 80',80.0,500,200,6.3,7.3,102.0,43658,980,1746,98.0,20.69,3.10,34.60,472411],
+['VS 500 x 92',92.0,500,200,8.0,7.3,117.0,49278,1106,1971,110.6,20.49,3.07,64.00,512571],
+['VS 500 x 103',103.0,500,200,9.5,7.3,131.0,54403,1213,2176,121.3,20.34,3.04,101.0,548867],
+['VS 500 x 100',100.0,500,300,6.3,6.3,127.0,63135,2341,2525,234.1,22.29,4.29,67.20,802904],
+['VS 500 x 113',113.0,500,300,8.0,6.3,144.0,72255,2672,2890,267.2,22.36,4.31,109.6,899936],
+['VS 500 x 128',128.0,500,300,9.5,6.3,163.0,80522,2981,3221,298.1,22.23,4.29,173.1,969466],
+['VS 500 x 127',127.0,500,300,6.3,10.0,162.0,85677,3130,3427,313.0,23.00,4.39,154.2,1051737],
+['VS 500 x 145',145.0,500,300,8.0,10.0,185.0,97975,3591,3919,359.1,23.01,4.41,248.0,1162728],
+['VS 500 x 165',165.0,500,300,10.0,10.0,211.0,109456,4022,4378,402.2,22.78,4.37,427.6,1259558],
+['VS 550 x 68',68.0,550,250,6.3,4.75,86.5,43224,1085,1572,86.8,22.35,3.54,14.10,647973],
+['VS 550 x 76',76.0,550,250,8.0,4.75,96.4,45658,1229,1660,98.3,21.76,3.57,29.50,672393],
+['VS 550 x 86',86.0,550,250,9.5,4.75,109.0,53032,1407,1928,112.6,21.99,3.58,50.60,720624],
+['VS 550 x 82',82.0,550,250,5.3,7.3,104.0,56280,1371,2047,108.7,23.28,3.62,26.20,802898],
+['VS 550 x 90',90.0,550,250,6.3,7.3,114.0,61372,1460,2232,118.6,23.24,3.57,42.00,835480],
+['VS 550 x 103',103.0,550,250,8.0,7.3,130.0,69124,1645,2514,133.6,23.09,3.54,77.20,903485],
+['VS 550 x 116',116.0,550,250,9.5,7.3,146.0,76695,1819,2789,147.9,22.91,3.50,122.8,973052],
+['VS 550 x 112',112.0,550,350,6.3,6.3,143.0,93413,3239,3397,323.9,25.42,4.75,91.40,1314770],
+['VS 550 x 127',127.0,550,350,8.0,6.3,162.0,106965,3711,3890,371.1,25.42,4.75,148.8,1475700],
+['VS 550 x 142',142.0,550,350,9.5,6.3,181.0,119213,4140,4335,414.0,25.34,4.75,235.0,1589662],
+['VS 550 x 139',139.0,550,350,6.3,10.0,178.0,127165,4363,4624,436.3,26.53,4.84,209.6,1713018],
+['VS 550 x 159',159.0,550,350,8.0,10.0,203.0,144972,5005,5272,500.5,26.48,4.84,334.7,1891402],
+['VS 550 x 180',180.0,550,350,10.0,10.0,230.0,161152,5588,5860,558.8,26.20,4.79,578.3,2042558],
+['VS 600 x 75',75.0,600,250,6.3,4.75,95.2,57418,1189,1914,95.4,24.49,3.53,15.70,904931],
+['VS 600 x 83',83.0,600,250,8.0,4.75,106.0,61096,1346,2037,107.6,23.87,3.55,33.00,936327],
+['VS 600 x 94',94.0,600,250,9.5,4.75,120.0,70664,1530,2355,122.1,24.05,3.56,56.00,995230],
+['VS 600 x 90',90.0,600,250,5.3,7.3,114.0,75223,1499,2507,118.0,25.66,3.62,29.10,1121600],
+['VS 600 x 99',99.0,600,250,6.3,7.3,125.0,81896,1590,2730,127.0,25.56,3.56,46.50,1163760],
+['VS 600 x 113',113.0,600,250,8.0,7.3,143.0,92317,1792,3077,142.0,25.37,3.52,86.30,1259025],
+['VS 600 x 127',127.0,600,250,9.5,7.3,161.0,102480,1985,3416,158.0,25.23,3.48,138.1,1357383],
+['VS 600 x 123',123.0,600,350,6.3,6.3,157.0,122794,3490,4093,349.0,27.98,4.72,102.1,1824058],
+['VS 600 x 139',139.0,600,350,8.0,6.3,178.0,140868,4004,4696,400.4,28.13,4.72,166.8,2053860],
+['VS 600 x 155',155.0,600,350,9.5,6.3,199.0,157205,4471,5240,447.1,28.11,4.72,265.1,2214685],
+['VS 600 x 152',152.0,600,350,6.3,10.0,195.0,167950,4727,5598,472.7,29.34,4.81,238.3,2389523],
+['VS 600 x 174',174.0,600,350,8.0,10.0,222.0,192184,5432,6406,543.2,29.42,4.81,375.6,2641614],
+['VS 600 x 197',197.0,600,350,10.0,10.0,251.0,213453,6053,7115,605.3,29.13,4.79,637.9,2842288],
+['VS 650 x 82',82.0,650,250,6.3,4.75,105.0,72731,1299,2238,103.9,26.37,3.53,16.80,1126540],
+['VS 650 x 91',91.0,650,250,8.0,4.75,116.0,77664,1471,2390,117.5,25.89,3.56,35.70,1167370],
+['VS 650 x 103',103.0,650,250,9.5,4.75,131.0,89541,1670,2755,133.2,26.14,3.57,60.60,1238926],
+['VS 650 x 99',99.0,650,250,5.3,7.3,125.0,95352,1637,2934,128.6,27.64,3.62,31.50,1400045],
+['VS 650 x 109',109.0,650,250,6.3,7.3,138.0,104015,1731,3200,138.3,27.50,3.56,50.30,1451040],
+['VS 650 x 124',124.0,650,250,8.0,7.3,157.0,117332,1949,3610,154.5,27.34,3.52,93.70,1567850],
+['VS 650 x 139',139.0,650,250,9.5,7.3,176.0,130298,2156,4009,171.8,27.22,3.49,150.4,1684455],
+['VS 650 x 134',134.0,650,350,6.3,6.3,171.0,154012,3714,4739,371.4,30.15,4.72,113.0,2441496],
+['VS 650 x 152',152.0,650,350,8.0,6.3,194.0,176604,4264,5434,426.4,30.18,4.72,184.7,2747397],
+['VS 650 x 170',170.0,650,350,9.5,6.3,216.0,197289,4768,6070,476.8,30.22,4.71,292.9,2969228],
+['VS 650 x 166',166.0,650,350,6.3,10.0,213.0,212083,5042,6526,504.2,31.56,4.81,265.5,3213000],
+['VS 650 x 190',190.0,650,350,8.0,10.0,242.0,242714,5806,7468,580.6,31.71,4.81,417.3,3554060],
+['VS 650 x 215',215.0,650,350,10.0,10.0,274.0,269474,6477,8291,647.7,31.40,4.78,709.2,3825450],
+['VS 750 x 95',95.0,750,300,6.3,6.3,121.0,130369,2857,3476,260.4,32.85,4.85,62.00,2855330],
+['VS 750 x 108',108.0,750,300,8.0,6.3,137.0,147501,3218,3933,292.6,32.83,4.86,99.10,3157420],
+['VS 750 x 121',121.0,750,300,10.0,6.3,154.0,162600,3549,4337,319.8,32.45,4.82,172.6,3387310],
+['VS 850 x 140',140.0,850,300,6.3,8.0,178.0,224511,3491,5283,320.0,35.52,4.43,94.10,6043420],
+['VS 850 x 157',157.0,850,300,8.0,8.0,200.0,251807,3925,5924,359.4,35.48,4.43,146.5,6655030],
+['VS 850 x 175',175.0,850,300,10.0,8.0,222.0,276859,4259,6514,388.5,35.31,4.41,254.2,7171210]
+];
+
+/* --- CANTONEIRAS DE ABAS IGUAIS — L ---
+   Formato: [nome, massa(kg/m), h(mm), t(mm), A(cm²), Ix(cm⁴), Wx(cm³), rx(cm), Xg(cm)] */
+const PERFIS_L = [
+['L 5/8" x 1/8"',0.71,16,3.18,0.96,0.20,0.18,0.45,0.51],
+['L 3/4" x 1/8"',0.88,19,3.18,1.16,0.37,0.28,0.58,0.58],
+['L 7/8" x 1/8"',1.04,22,3.18,1.35,0.58,0.37,0.66,0.66],
+['L 1" x 1/8"',1.19,25,3.18,1.48,0.83,0.49,0.76,0.76],
+['L 1" x 3/16"',1.73,25,4.76,2.19,1.24,0.65,0.76,0.81],
+['L 1" x 1/4"',2.21,25,6.35,2.83,1.66,0.98,0.73,0.86],
+['L 1.1/4" x 1/8"',1.50,32,3.18,1.93,1.66,0.81,0.96,0.91],
+['L 1.1/4" x 3/16"',2.20,32,4.76,2.77,2.49,1.14,0.96,0.96],
+['L 1.1/4" x 1/4"',2.86,32,6.35,3.61,3.32,1.47,0.93,1.01],
+['L 1.1/2" x 1/8"',1.83,38,3.18,2.32,3.32,1.14,1.19,1.06],
+['L 1.1/2" x 3/16"',2.68,38,4.76,3.42,4.57,1.63,1.16,1.11],
+['L 1.1/2" x 1/4"',3.48,38,6.35,4.45,5.82,2.13,1.14,1.19],
+['L 1.1/2" x 5/16"',4.26,38,7.94,5.42,6.65,4.53,1.11,1.24],
+['L 1.3/4" x 1/8"',2.14,44,3.18,2.70,5.41,1.63,1.39,1.21],
+['L 1.3/4" x 3/16"',3.15,44,4.76,3.99,7.49,2.29,1.37,1.29],
+['L 1.3/4" x 1/4"',4.12,44,6.35,5.22,9.57,3.11,1.34,1.34],
+['L 1.3/4" x 5/16"',5.05,44,7.94,6.45,11.23,3.77,1.32,1.39],
+['L 1.3/4" x 3/8"',5.94,44,9.53,7.61,12.90,4.26,1.29,1.45],
+['L 2" x 1/8"',2.46,51,3.18,3.09,7.90,2.13,1.60,1.39],
+['L 2" x 3/16"',3.63,51,4.76,4.58,11.23,3.11,1.57,1.44],
+['L 2" x 1/4"',4.76,51,6.35,6.06,14.56,4.09,1.54,1.49],
+['L 2" x 5/16"',5.83,51,7.94,7.41,17.48,4.91,1.52,1.54],
+['L 2" x 3/8"',6.99,51,9.53,8.77,19.97,5.73,1.49,1.62]
+];
+
+/* =========================================================================
+   DERIVAÇÃO DE PROPRIEDADES
+   ========================================================================= */
+function derivarGeometria(d,bf,tf,tw){
+  const J  = (2*bf*Math.pow(tf,3) + (d-tf)*Math.pow(tw,3)) / 3;
+  const Cw = tf * Math.pow(bf,3) * Math.pow(d-tf,2) / 24;
+  const Zx = bf*tf*(d-tf) + tw*Math.pow(d-2*tf,2)/4;
+  const Zy = tf*Math.pow(bf,2)/2 + (d-2*tf)*Math.pow(tw,2)/4;
+  return { J, Cw, Zx, Zy };
+}
+function propriedadesGeometricas(d,bf,tf,tw){
+  const hw = d-2*tf;
+  const A  = 2*bf*tf + hw*tw;
+  const Ix = (bf*Math.pow(d,3) - (bf-tw)*Math.pow(hw,3)) / 12;
+  const Iy = (2*tf*Math.pow(bf,3) + hw*Math.pow(tw,3)) / 12;
+  const Wx = Ix/(d/2);
+  const Wy = Iy/(bf/2);
+  const rx = Math.sqrt(Ix/A);
+  const ry = Math.sqrt(Iy/A);
+  const der = derivarGeometria(d,bf,tf,tw);
+  return {
+    A:A/100, Ix:Ix/1e4, Iy:Iy/1e4, Wx:Wx/1e3, Wy:Wy/1e3,
+    rx:rx/10, ry:ry/10, Zx:der.Zx/1e3, Zy:der.Zy/1e3,
+    J:der.J/1e4, Cw:der.Cw/1e6, massa:A*7850/1e6
+  };
+}
+
+/* --- normalizadores --- */
+function normalizarIH(reg){
+  const [n,m,d,bf,tf,tw,A,Ix,Iy,Wx,Wy,rx,ry,J,Cw] = reg;
+  const der = derivarGeometria(d,bf,tf,tw);
+  return {
+    nome:n, massa:m, d, bf, tf, tw, r:0, A,
+    Ix:Ix*1e4, Iy:Iy*1e4, Wx:Wx*1e3, Wy:Wy*1e3,
+    Zx:der.Zx, Zy:der.Zy,
+    rx:rx*10, ry:ry*10,
+    J :J*1e4, Cw:Cw*1e6,
+    origem:'banco', tipo:'IH'
+  };
+}
+function normalizarL(reg){
+  const [n,m,h,t,A,Ix,Wx,rx,Xg] = reg;
+  const J = (2*h-t)*Math.pow(t,3)/3;
+  return {
+    nome:n, massa:m, d:h, bf:h, tf:t, tw:t, r:0, A,
+    Ix:Ix*1e4, Iy:Ix*1e4, Wx:Wx*1e3, Wy:Wx*1e3,
+    Zx:Wx*1e3*1.5, Zy:Wx*1e3*1.5,
+    rx:rx*10, ry:rx*10,
+    J :J, Cw:0,
+    Xg:Xg*10,
+    origem:'banco', tipo:'L',
+    aviso:'Perfil tipo L (cantoneira de abas iguais). O motor foi construído para seções I/H duplamente simétricas. Os resultados devem ser interpretados como indicativos — verificação específica de flexão biaxial é necessária.'
+  };
+}
+function normalizarPerfil(reg, tipo){
+  return tipo === 'L' ? normalizarL(reg) : normalizarIH(reg);
+}
+
+/* =========================================================================
+   ESTADO
+   ========================================================================= */
+const S = { pontos: [ { desc:'Carga concentrada', a:3.00, pg:0, pq:0 } ] };
+
+/* =========================================================================
+   LEITURA DE CONFIGURAÇÃO
+   ========================================================================= */
+function lerCfg(){
+  const acoSel = $('#p_aco').value;
+  const mat = MATERIAIS[acoSel];
+  const fy = mat ? mat.fy : num($('#p_fy').value, 345);
+  const fu = mat ? mat.fu : num($('#p_fu').value, 450);
+
+  const perfil = lerPerfil();
+
+  const cfg = {
+    projeto:{
+      nome:$('#p_nome').value||'—', elemento:$('#p_elem').value||'—',
+      viga:$('#p_viga').value||'—', pav:$('#p_pav').value||'—'
+    },
+    L: Math.max(num($('#p_vao').value,6),0.1) * 1000,
+    nVaos: Math.max(1,Math.round(num($('#p_nvaos').value,1))),
+    apoio:$('#p_apoio').value,
+    tipoPerfil:$('#p_tipoPerfil').value,
+    aco:acoSel, fy, fu,
+    E:num($('#p_E').value,200000),
+    G:num($('#p_G').value,77000),
+    perfil
+  };
+
+  cfg.acoes = {
+    laje:num($('#a_laje').value,0), rev:num($('#a_rev').value,0),
+    forro:num($('#a_forro').value,0), inst:num($('#a_inst').value,0),
+    outros:num($('#a_outros').value,0), parede:num($('#a_parede').value,0),
+    util:num($('#a_util').value,0), cob:num($('#a_cob').value,0),
+    manut:num($('#a_manut').value,0), equip:num($('#a_equip').value,0),
+    espec:num($('#a_espec').value,0)
+  };
+  cfg.acoes.supG = cfg.acoes.laje+cfg.acoes.rev+cfg.acoes.forro+cfg.acoes.inst+cfg.acoes.outros;
+  cfg.acoes.supQ = cfg.acoes.util+cfg.acoes.cob+cfg.acoes.manut+cfg.acoes.equip+cfg.acoes.espec;
+
+  const pos = $('#ai_pos').value;
+  const be  = Math.max(num($('#ai_be').value,3),0);
+  const bd  = Math.max(num($('#ai_bd').value,3),0);
+  const bwCalc = (pos === 'interna') ? (be/2 + bd/2) : (be/2);
+  $('#ai_bwcalc').value = fx(bwCalc, 2);
+  const bw = num($('#ai_bw').value, bwCalc);
+  $('#ai_L').value = fx(cfg.L/1000, 2);
+  cfg.bw = bw > 0 ? bw : bwCalc;
+
+  cfg.usarPP = $('#a_pp').checked;
+  cfg.qpp = cfg.usarPP && perfil ? perfil.massa*9.81/1000 : 0;
+
+  cfg.qg = cfg.acoes.supG*cfg.bw + cfg.acoes.parede + cfg.qpp;
+  cfg.qk = cfg.acoes.supQ*cfg.bw;
+
+  cfg.pts = S.pontos.map(p => ({
+    desc:p.desc||'P',
+    a: clamp(num(p.a,0), 0, cfg.L/1000)*1000,
+    pg:num(p.pg,0), pq:num(p.pq,0)
+  }));
+
+  cfg.gg = num($('#c_gg').value,1.25);
+  cfg.gq = num($('#c_gq').value,1.50);
+  cfg.psi1 = num($('#c_psi1').value,0.40);
+  cfg.psi2 = num($('#c_psi2').value,0.30);
+
+  const lm = $('#pre_lim').value;
+  cfg.nLim = (lm === 'custom') ? num($('#pre_limc').value,250) : num(lm,250);
+  const lv = $('#pre_limv').value;
+  cfg.nLimV = (lv === 'custom') ? num($('#pre_limvc').value,350) : num(lv,350);
+
+  cfg.Lb = Math.max(num($('#es_Lb').value,6),0.01)*1000;
+  cfg.cbMode = $('#es_cbmode').value;
+  cfg.cbUser = num($('#es_cb').value,1.0);
+
+  return cfg;
+}
+
+function lerPerfil(){
+  const sel = $('#pf_sel').value;
+  const tipo = $('#pf_sel').dataset.fonte || 'IH';
+
+  if(sel !== '__custom__'){
+    const idx = parseInt(sel.replace('i:',''), 10);
+    let reg;
+    if(tipo === 'L')       reg = PERFIS_L[idx];
+    else if(tipo === 'VS') reg = PERFIS_VS[idx];
+    else                   reg = PERFIS_IH_LAM[idx];
+    if(reg) return normalizarPerfil(reg, tipo === 'L' ? 'L' : 'IH');
+  }
+
+  const d  = num($('#pf_d').value, 300);
+  const bf = num($('#pf_bf').value, 150);
+  const tf = num($('#pf_tf').value, 8);
+  const tw = num($('#pf_tw').value, 6);
+  if(d<=0 || bf<=0 || tf<=0 || tw<=0) return null;
+  const r  = Math.max(num($('#pf_r').value,0),0);
+  return {
+    nome:'Personalizado ('+fx(d,0)+'×'+fx(bf,0)+'×'+fx(tw,1)+')',
+    massa:num($('#pf_massa').value,0),
+    A:num($('#pf_A').value,0),
+    d, bf, tf, tw, r,
+    Ix:num($('#pf_Ix').value,0)*1e4, Iy:num($('#pf_Iy').value,0)*1e4,
+    Wx:num($('#pf_Wx').value,0)*1e3, Wy:num($('#pf_Wy').value,0)*1e3,
+    Zx:num($('#pf_Zx').value,0)*1e3, Zy:num($('#pf_Zy').value,0)*1e3,
+    rx:num($('#pf_rx').value,0)*10, ry:num($('#pf_ry').value,0)*10,
+    J:num($('#pf_J').value,0)*1e4, Cw:num($('#pf_Cw').value,0)*1e6,
+    origem:'manual', tipo:'custom'
+  };
+}
+
+/* =========================================================================
+   MOTOR MATEMÁTICO
+   ========================================================================= */
+function classificarSecao(p,cfg){
+  const { fy, E } = cfg;
+  const sigr = 0.30*fy;
+
+  const lamF  = p.bf/(2*p.tf);
+  const lamFp = 0.38*Math.sqrt(E/fy);
+  const lamFr = 0.83*Math.sqrt(E/(fy-sigr));
+
+  const h     = p.d - 2*p.tf - 2*(p.r||0);
+  const lamW  = h/p.tw;
+  const lamWp = 3.76*Math.sqrt(E/fy);
+  const lamWr = 5.70*Math.sqrt(E/fy);
+
+  const cls = (l,lp,lr) => (l<=lp ? 'Compacta' : (l<=lr ? 'Semicompacta' : 'Esbelta'));
+  const cF = cls(lamF, lamFp, lamFr);
+  const cW = cls(lamW, lamWp, lamWr);
+  const ordem = {'Compacta':0,'Semicompacta':1,'Esbelta':2};
+  const pior = ordem[cF] >= ordem[cW] ? 'mesa' : 'alma';
+
+  return {
+    mesa:{lam:lamF, lp:lamFp, lr:lamFr, cls:cF},
+    alma:{lam:lamW, lp:lamWp, lr:lamWr, cls:cW, h},
+    global: ordem[cF] >= ordem[cW] ? cF : cW,
+    controla:pior
+  };
+}
+
+function resistenciaFlexao(p,cfg,classif,cb,Lb){
+  const { fy, E, G } = cfg;
+  const sigr = 0.30*fy;
+  const ea1 = 1.10;
+
+  const Mpl = p.Zx*fy;
+  const Mr  = p.Wx*(fy - sigr);
+
+  const f = classif.mesa;
+  let Mrd_FLM;
+  if(f.lam <= f.lp)        Mrd_FLM = Mpl;
+  else if(f.lam <= f.lr)   Mrd_FLM = Mpl - (Mpl-Mr)*(f.lam-f.lp)/(f.lr-f.lp);
+  else                     Mrd_FLM = Mr*Math.pow(f.lr/f.lam, 2);
+
+  const w = classif.alma;
+  let Mrd_FLA;
+  if(w.lam <= w.lp)        Mrd_FLA = Mpl;
+  else if(w.lam <= w.lr)   Mrd_FLA = Mpl - (Mpl-Mr)*(w.lam-w.lp)/(w.lr-w.lp);
+  else                     Mrd_FLA = Mr*Math.pow(w.lr/w.lam, 2);
+
+  const ry = p.ry;
+  const beta1 = (fy - sigr)*p.Wx/(E*p.J);
+  const Lp = 1.76*ry*Math.sqrt(E/fy);
+
+  const raiz1 = Math.sqrt(p.Iy*p.J);
+  const denom = ry*p.J*beta1;
+  const interno = 1 + Math.sqrt(1 + 27*p.Cw*beta1*beta1/p.Iy);
+  let lamR = 1.38*(raiz1/denom)*Math.sqrt(interno);
+  if(!Number.isFinite(lamR) || lamR<=0) lamR = 1e6;
+  const Lr = lamR*ry;
+
+  function calcMcr(L,Cb){
+    if(L <= 0) return Infinity;
+    if(p.Cw <= 0) return Cb*(Math.PI/L)*Math.sqrt(E*p.Iy*G*p.J);
+    const t1 = E*p.Iy*G*p.J;
+    const t2 = Math.pow(Math.PI*E/L, 2)*p.Iy*p.Cw;
+    return Cb*(Math.PI/L)*Math.sqrt(t1+t2);
+  }
+
+  let Mrd_FLT, Mcr = null, regiao;
+  if(Lb <= Lp){
+    Mrd_FLT = Mpl;
+    regiao = '1 — Lb ≤ Lp (plastificação)';
+  } else if(Lb <= Lr){
+    Mrd_FLT = Mpl - (Mpl-Mr)*(Lb-Lp)/(Lr-Lp);
+    regiao = '2 — Lp < Lb ≤ Lr (regime inelástico)';
+  } else {
+    Mcr = calcMcr(Lb, cb);
+    Mrd_FLT = Mcr;
+    regiao = '3 — Lb > Lr (flambagem elástica)';
+  }
+
+  const Mrd_FLT_g = Math.min(Mrd_FLT, Mpl)/ea1;
+  const Mrd_FLM_g = Mrd_FLM/ea1;
+  const Mrd_FLA_g = Mrd_FLA/ea1;
+
+  const candidatos = [
+    { nome:'FLM — flambagem local da mesa', val:Mrd_FLM_g },
+    { nome:'FLA — flambagem local da alma', val:Mrd_FLA_g },
+    { nome:'FLT — flambagem lateral com torção', val:Mrd_FLT_g }
+  ];
+  candidatos.sort((a,b)=>a.val-b.val);
+
+  return {
+    Mpl, Mr, Mcr, Lp, Lr, beta1, regiao,
+    FLM:Mrd_FLM_g, FLA:Mrd_FLA_g, FLT:Mrd_FLT_g,
+    Mrd: candidatos[0].val, governa: candidatos[0].nome, candidatos
+  };
+}
+
+function resistenciaCisalhamento(p,cfg,classif){
+  const { fy, E } = cfg;
+  const ea1 = 1.10;
+  const h   = classif.alma.h;
+  const Aw  = h*p.tw;
+  const Vpl = 0.60*Aw*fy;
+  const kv  = 5.0;
+  const lam  = h/p.tw;
+  const lamP = 1.10*Math.sqrt(kv*E/fy);
+  const lamR = 1.37*Math.sqrt(kv*E/fy);
+
+  let Vrd, regiao;
+  if(lam <= lamP){ Vrd = Vpl; regiao = 'λ ≤ λp — plastificação'; }
+  else if(lam <= lamR){ Vrd = (lamP/lam)*Vpl; regiao = 'λp < λ ≤ λr — inelástico'; }
+  else { Vrd = 1.24*Math.pow(lamP/lam,2)*Vpl; regiao = 'λ > λr — flambagem elástica'; }
+
+  return { Aw, Vpl, Vrd:Vrd/ea1, lam, lamP, lamR, regiao, kv };
+}
+
+function analiseElastica(L,q,pts,EI){
+  const N = 301;
+  const RA = q*L/2 + pts.reduce((s,p)=>s + p.P*(L-p.a)/L, 0);
+  const RB = q*L/2 + pts.reduce((s,p)=>s + p.P*p.a/L, 0);
+
+  const xs=[], Vs=[], Ms=[], ds=[];
+  let Mmax=-Infinity, MmaxPos=0, Vmax=-Infinity, Vmin=Infinity;
+  let dmax=-Infinity, dmaxPos=0;
+
+  for(let i=0; i<N; i++){
+    const x = L*i/(N-1);
+    let V = RA - q*x;
+    let M = RA*x - q*x*x/2;
+    let d = q*x*(Math.pow(L,3) - 2*L*x*x + Math.pow(x,3))/(24*EI);
+
+    for(const p of pts){
+      if(x > p.a){ V -= p.P; M -= p.P*(x-p.a); }
+      const a = p.a, b = L-a;
+      if(b<=0 || a<=0) continue;
+      if(x <= a){
+        d += p.P*b*x*(L*L - b*b - x*x)/(6*L*EI);
+      } else {
+        const t = L-x;
+        d += p.P*a*t*(L*L - a*a - t*t)/(6*L*EI);
+      }
+    }
+
+    xs.push(x); Vs.push(V); Ms.push(M); ds.push(d);
+    if(M>Mmax){ Mmax=M; MmaxPos=x; }
+    if(V>Vmax) Vmax=V;
+    if(V<Vmin) Vmin=V;
+    if(d>dmax){ dmax=d; dmaxPos=x; }
+  }
+
+  function mat(x){
+    const i = clamp(Math.round(x/L*(N-1)), 0, N-1);
+    return Math.abs(Ms[i]);
+  }
+  const MA=mat(L*0.25), MB=mat(L*0.50), MC=mat(L*0.75);
+  const Mx = Math.max(Math.abs(Mmax), 1e-9);
+  let Cb = 12.5*Mx/(2.5*Mx + 3*MA + 4*MB + 3*MC);
+  if(!Number.isFinite(Cb)) Cb = 1;
+  Cb = clamp(Cb, 1.0, 3.0);
+
+  return { RA, RB, xs, Vs, Ms, ds, Mmax, MmaxPos, Vmax, Vmin, dmax, dmaxPos, Cb };
+}
+
+function montarCombinacoes(cfg){
+  const qg = cfg.qg, qk = cfg.qk;
+  const P = cfg.pts;
+  const esc = (f) => P.map(p => ({ a:p.a, P:f(p) }));
+
+  const elu   = { nome:'ELU — normal', desc:`${fx(cfg.gg,2)}·G + ${fx(cfg.gq,2)}·Q`,
+                  q:cfg.gg*qg + cfg.gq*qk, pts:esc(p=>cfg.gg*p.pg + cfg.gq*p.pq) };
+  const carac = { nome:'ELS — característica', desc:'G + Q',
+                  q:qg + qk, pts:esc(p=>p.pg+p.pq) };
+  const freq  = { nome:'ELS — frequente', desc:`G + ${fx(cfg.psi1,2)}·Q`,
+                  q:qg + cfg.psi1*qk, pts:esc(p=>p.pg + cfg.psi1*p.pq) };
+  const qp    = { nome:'ELS — quase permanente', desc:`G + ${fx(cfg.psi2,2)}·Q`,
+                  q:qg + cfg.psi2*qk, pts:esc(p=>p.pg + cfg.psi2*p.pq) };
+  const var_  = { nome:'ELS — apenas ações variáveis', desc:'Q',
+                  q:qk, pts:esc(p=>p.pq) };
+
+  return { elu, carac, freq, qp, var:var_ };
+}
+
+function calcular(){
+  const cfg = lerCfg();
+  const res = { cfg, ok:false, msgs:[], naoRealizadas:[], util:{} };
+
+  if(!cfg.perfil){
+    res.naoRealizadas.push('Perfil não definido ou com dimensões inválidas.');
+    return res;
+  }
+  if(cfg.apoio !== 'bi'){
+    res.naoRealizadas.push('Tipo de apoio "' + $('#p_apoio').selectedOptions[0].text + '" não implementado nesta versão (apenas viga biapoiada).');
+    return res;
+  }
+  if(cfg.L <= 0){ res.naoRealizadas.push('Vão inválido.'); return res; }
+  if(cfg.qg + cfg.qk <= 0 && cfg.pts.every(p=>p.pg+p.pq===0)){
+    res.msgs.push({t:'w', m:'Nenhuma carga definida — resultados de resistência serão nulos.'});
+  }
+
+  const p = cfg.perfil;
+  const EI = cfg.E*p.Ix;
+
+  res.classif = classificarSecao(p, cfg);
+  res.comb    = montarCombinacoes(cfg);
+
+  const A_elu   = analiseElastica(cfg.L, res.comb.elu.q,   res.comb.elu.pts,   EI);
+  const A_carac = analiseElastica(cfg.L, res.comb.carac.q, res.comb.carac.pts, EI);
+  const A_var   = analiseElastica(cfg.L, res.comb['var'].q, res.comb['var'].pts, EI);
+  const A_qp    = analiseElastica(cfg.L, res.comb.qp.q,    res.comb.qp.pts,    EI);
+  res.A = { elu:A_elu, carac:A_carac, var:A_var, qp:A_qp };
+
+  let Cb;
+  if(cfg.cbMode === 'auto')   Cb = A_elu.Cb;
+  else if(cfg.cbMode === '1') Cb = 1.0;
+  else                        Cb = clamp(cfg.cbUser, 0.5, 3.0);
+  res.Cb = Cb;
+  res.CbAuto = A_elu.Cb;
+
+  res.flex = resistenciaFlexao(p, cfg, res.classif, Cb, cfg.Lb);
+  res.cis  = resistenciaCisalhamento(p, cfg, res.classif);
+
+  res.Msd = A_elu.Mmax;
+  res.Vsd = Math.max(Math.abs(A_elu.Vmax), Math.abs(A_elu.Vmin));
+  res.MsdCarac = A_carac.Mmax;
+
+  res.deltaLim   = cfg.L/cfg.nLim;
+  res.deltaLimV  = cfg.L/cfg.nLimV;
+  res.deltaTotal = A_carac.dmax;
+  res.deltaVar   = A_var.dmax;
+  res.deltaG     = analiseElastica(cfg.L, cfg.qg, cfg.pts.map(x=>({a:x.a,P:x.pg})), EI).dmax;
+  res.deltaQP    = A_qp.dmax;
+
+  const Iref = 1e8;
+  const Aref = analiseElastica(cfg.L, res.comb.carac.q, res.comb.carac.pts, cfg.E*Iref);
+  const Cflex = Aref.dmax*cfg.E*Iref;
+  res.Inec = (res.deltaLim > 0) ? Cflex/(cfg.E*res.deltaLim) : Infinity;
+  res.InecVar = (res.deltaLimV > 0)
+      ? (analiseElastica(cfg.L, res.comb['var'].q, res.comb['var'].pts, cfg.E*Iref).dmax*cfg.E*Iref)/(cfg.E*res.deltaLimV)
+      : Infinity;
+
+  const etaM = res.Msd/res.flex.Mrd;
+  const etaV = res.Vsd/res.cis.Vrd;
+  const etaD = res.deltaTotal/res.deltaLim;
+  const etaDv= res.deltaVar/res.deltaLimV;
+
+  res.util = {
+    'Flexão (M)':etaM,
+    'Cisalhamento (V)':etaV,
+    'Flecha total (ELS)':etaD,
+    'Flecha variável (ELS)':etaDv,
+    'Inércia necessária': res.Inec/p.Ix
+  };
+  res.etaMax = Math.max(...Object.values(res.util).filter(Number.isFinite));
+
+  res.contraflecha = {
+    deltaG:res.deltaG,
+    limG:cfg.L/cfg.nLim,
+    necessaria: res.deltaG > cfg.L/cfg.nLim,
+    sugerida: res.deltaG > cfg.L/500 ? Math.round(res.deltaG*0.8) : 0
+  };
+
+  const mKg_m = p.massa + (cfg.qg+cfg.qk)*1000/9.81/1000*1000;
+  const m = mKg_m;
+  const EI_Nm2 = cfg.E*1e6*(p.Ix/1e12);
+  const Lm = cfg.L/1000;
+  const f1 = (Math.PI/(2*Lm*Lm))*Math.sqrt(EI_Nm2/(m > 0 ? m : 1));
+  res.vib = { f1, m };
+
+  res.Lmax = calcularLmaxSemTravamento(p, cfg, Cb, res.Msd, res.flex);
+
+  const falhas = [];
+  if(etaM > 1)  falhas.push('Flexão: Msd > Mrd');
+  if(etaV > 1)  falhas.push('Cisalhamento: Vsd > Vrd');
+  if(etaD > 1)  falhas.push('Flecha total acima do limite');
+  if(etaDv > 1) falhas.push('Flecha das ações variáveis acima do limite');
+  if(p.Ix < res.Inec) falhas.push('Inércia insuficiente para o limite de flecha');
+  res.falhas = falhas;
+  res.ok = falhas.length === 0 && res.naoRealizadas.length === 0;
+
+  return res;
+}
+
+function calcularLmaxSemTravamento(p,cfg,Cb,Msd,flex){
+  if(Msd <= 0) return flex.Lr;
+  const f = (Lb) => resistenciaFlexao(p, cfg, classificarSecao(p, cfg), Cb, Lb).Mrd - Msd;
+  if(f(1) < 0) return 0;
+  if(f(60000) > 0) return 60000;
+  let lo = 1, hi = 60000;
+  for(let i=0; i<60; i++){
+    const mid = (lo+hi)/2;
+    if(f(mid) >= 0) lo = mid; else hi = mid;
+  }
+  return lo;
+}
+
+/* =========================================================================
+   GRÁFICOS
+   ========================================================================= */
+function preparaCanvas(cv){
+  if(!cv) return null;
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth || cv.parentElement.clientWidth || 400;
+  const H = cv.clientHeight || 220;
+  cv.width  = Math.round(W*dpr);
+  cv.height = Math.round(H*dpr);
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+  return { ctx, W, H };
+}
+
+function ticks(vmin,vmax,n){
+  if(vmin === vmax){ vmin -= 1; vmax += 1; }
+  const raw = (vmax-vmin)/n;
+  const mag = Math.pow(10, Math.floor(Math.log10(Math.abs(raw)||1)));
+  const norm = raw/mag;
+  let step;
+  if(norm <= 1) step = 1; else if(norm <= 2) step = 2; else if(norm <= 5) step = 5; else step = 10;
+  step *= mag;
+  const start = Math.ceil(vmin/step)*step;
+  const out = [];
+  for(let v=start; v<=vmax+step*1e-6; v+=step) out.push(v);
+  return out;
+}
+
+function plot(cv,cfg){
+  const env = preparaCanvas(cv);
+  if(!env) return;
+  const { ctx, W, H } = env;
+  const M = { l:66, r:16, t:26, b:40 };
+  const pw = W-M.l-M.r, ph = H-M.t-M.b;
+  if(pw < 20 || ph < 20) return;
+
+  let xmin=Infinity, xmax=-Infinity, ymin=Infinity, ymax=-Infinity;
+  (cfg.series||[]).forEach(s => {
+    for(let i=0; i<s.x.length; i++){
+      const X = s.x[i], Y = s.y[i];
+      if(!Number.isFinite(X) || !Number.isFinite(Y)) continue;
+      if(X<xmin) xmin=X; if(X>xmax) xmax=X;
+      if(Y<ymin) ymin=Y; if(Y>ymax) ymax=Y;
+    }
+  });
+  (cfg.hlines||[]).forEach(h => {
+    if(!Number.isFinite(h.y)) return;
+    if(h.y<ymin) ymin=h.y; if(h.y>ymax) ymax=h.y;
+  });
+  (cfg.vlines||[]).forEach(v => {
+    if(!Number.isFinite(v.x)) return;
+    if(v.x<xmin) xmin=v.x; if(v.x>xmax) xmax=v.x;
+  });
+  if(!Number.isFinite(xmin) || !Number.isFinite(ymin)) return;
+  if(xmin === xmax){ xmin -= 1; xmax += 1; }
+  if(ymin === ymax){ ymin -= 1; ymax += 1; }
+  const padY = (ymax-ymin)*0.08;
+  ymin -= padY; ymax += padY;
+
+  const X = v => M.l + (v-xmin)/(xmax-xmin)*pw;
+  const Y = v => M.t + ph - (v-ymin)/(ymax-ymin)*ph;
+
+  ctx.strokeStyle = '#e9eef6'; ctx.lineWidth = 1;
+  const yt = ticks(ymin, ymax, 5);
+  yt.forEach(v => {
+    const yy = Y(v);
+    if(yy < M.t-1 || yy > M.t+ph+1) return;
+    ctx.beginPath(); ctx.moveTo(M.l, yy); ctx.lineTo(M.l+pw, yy); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '10px system-ui';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText(fmtTick(v), M.l-7, yy);
+  });
+  const xt = ticks(xmin, xmax, 5);
+  xt.forEach(v => {
+    const xx = X(v);
+    if(xx < M.l-1 || xx > M.l+pw+1) return;
+    ctx.beginPath(); ctx.moveTo(xx, M.t); ctx.lineTo(xx, M.t+ph); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '10px system-ui';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(fmtTick(v), xx, M.t+ph+6);
+  });
+
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(M.l, M.t); ctx.lineTo(M.l, M.t+ph); ctx.lineTo(M.l+pw, M.t+ph); ctx.stroke();
+
+  (cfg.hlines||[]).forEach(h => {
+    if(!Number.isFinite(h.y)) return;
+    const yy = Y(h.y);
+    if(yy < M.t || yy > M.t+ph) return;
+    ctx.save();
+    ctx.setLineDash(h.dash || [6,4]);
+    ctx.strokeStyle = h.color || '#c2410c'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(M.l, yy); ctx.lineTo(M.l+pw, yy); ctx.stroke();
+    ctx.restore();
+    if(h.label){
+      ctx.fillStyle = h.color || '#c2410c'; ctx.font = 'bold 10px system-ui';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+      ctx.fillText(h.label, M.l+5, yy-3);
+    }
+  });
+  (cfg.vlines||[]).forEach(v => {
+    if(!Number.isFinite(v.x)) return;
+    const xx = X(v.x);
+    if(xx < M.l || xx > M.l+pw) return;
+    ctx.save();
+    ctx.setLineDash(v.dash || [5,4]);
+    ctx.strokeStyle = v.color || '#0e9384'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(xx, M.t); ctx.lineTo(xx, M.t+ph); ctx.stroke();
+    ctx.restore();
+    if(v.label){
+      ctx.fillStyle = v.color || '#0e9384'; ctx.font = 'bold 10px system-ui';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillText(v.label, xx+3, M.t+3);
+    }
+  });
+
+  (cfg.series||[]).forEach(s => {
+    if(!s.x.length) return;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(M.l, M.t-2, pw, ph+4);
+    ctx.clip();
+    ctx.strokeStyle = s.color || '#0b63ce';
+    ctx.lineWidth = s.width || 2;
+    if(s.dash) ctx.setLineDash(s.dash);
+    ctx.beginPath();
+    let started = false;
+    for(let i=0; i<s.x.length; i++){
+      const px = X(s.x[i]), py = Y(s.y[i]);
+      if(!Number.isFinite(px) || !Number.isFinite(py)) continue;
+      if(!started){ ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    ctx.restore();
+  });
+
+  if(cfg.xlabel){
+    ctx.fillStyle = '#334155'; ctx.font = '11px system-ui';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.fillText(cfg.xlabel, M.l+pw/2, H-4);
+  }
+  if(cfg.ylabel){
+    ctx.save();
+    ctx.translate(12, M.t+ph/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = '#334155'; ctx.font = '11px system-ui';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(cfg.ylabel, 0, 0);
+    ctx.restore();
+  }
+  if(cfg.title){
+    ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11.5px system-ui';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText(cfg.title, M.l, 6);
+  }
+}
+function fmtTick(v){
+  const a = Math.abs(v);
+  if(a >= 1000) return (v/1000).toFixed(1)+'k';
+  if(a >= 100) return v.toFixed(0);
+  if(a >= 10) return v.toFixed(1);
+  if(a >= 1) return v.toFixed(2);
+  if(a === 0) return '0';
+  return v.toFixed(3);
+}
+
+function plotBarras(cv, itens){
+  const env = preparaCanvas(cv);
+  if(!env) return;
+  const { ctx, W, H } = env;
+  if(!itens.length) return;
+  const M = { l:130, r:44, t:14, b:24 };
+  const pw = W-M.l-M.r, ph = H-M.t-M.b;
+  const bh = Math.min(26, ph/itens.length - 6);
+
+  itens.forEach((it, i) => {
+    const y = M.t + i*(ph/itens.length) + (ph/itens.length - bh)/2;
+    const v = Number.isFinite(it.v) ? it.v : 0;
+    const w = clamp(v, 0, 1.35)/1.35*pw;
+    ctx.fillStyle = '#eef2f7';
+    ctx.fillRect(M.l, y, pw, bh);
+    ctx.fillStyle = v <= 1 ? '#15803d' : '#b42318';
+    ctx.fillRect(M.l, y, w, bh);
+    ctx.fillStyle = '#334155'; ctx.font = '11px system-ui';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText(it.label, M.l-8, y+bh/2);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = v <= 1 ? '#15803d' : '#b42318';
+    ctx.font = 'bold 11px system-ui';
+    ctx.fillText((v*100).toFixed(0)+'%', M.l+w+6, y+bh/2);
+  });
+  const x100 = M.l + (1/1.35)*pw;
+  ctx.save(); ctx.setLineDash([5,4]); ctx.strokeStyle = '#94a3b8';
+  ctx.beginPath(); ctx.moveTo(x100, M.t); ctx.lineTo(x100, M.t+ph); ctx.stroke(); ctx.restore();
+}
+
+/* =========================================================================
+   RENDERIZAÇÃO
+   ========================================================================= */
+let ULTIMO = null;
+
+function render(){
+  const res = calcular();
+  ULTIMO = res;
+  const cfg = res.cfg;
+
+  const st = $('#status');
+  if(res.naoRealizadas.length){
+    st.className = 'status wn';
+    st.innerHTML = '⚠ VERIFICAÇÃO NÃO REALIZADA<small>' + res.naoRealizadas[0] + '</small>';
+  } else if(res.ok){
+    st.className = 'status ok';
+    st.innerHTML = '✓ ATENDE<small>todas as verificações implementadas</small>';
+  } else {
+    st.className = 'status bad';
+    st.innerHTML = '✕ NÃO ATENDE<small>' + res.falhas[0] + '</small>';
+  }
+
+  const p = res.cfg.perfil;
+  $('#sb_perfil').textContent = p ? p.nome : '—';
+  $('#sb_vao').textContent = fx(cfg.L/1000, 2) + ' m';
+  $('#sb_qd').textContent = fx(res.comb.elu.q, 2) + ' kN/m';
+  $('#sb_msd').textContent = fx(res.Msd/1e6, 2) + ' kN·m';
+  $('#sb_mrd').textContent = fx(res.flex.Mrd/1e6, 2) + ' kN·m';
+  $('#sb_vsd').textContent = fx(res.Vsd/1000, 2) + ' kN';
+  $('#sb_vrd').textContent = fx(res.cis.Vrd/1000, 2) + ' kN';
+  $('#sb_d').textContent = fx(res.deltaTotal, 2) + ' mm';
+  $('#sb_dlim').textContent = fx(res.deltaLim, 2) + ' mm';
+  $('#sb_lb').textContent = fx(cfg.Lb/1000, 2) + ' m';
+  $('#sb_mcr').textContent = res.flex.Mcr ? fx(res.flex.Mcr/1e6, 2) + ' kN·m' : '—';
+  $('#sb_eta').textContent = Number.isFinite(res.etaMax) ? fx(res.etaMax, 2) : '—';
+  $('#sb_eta').className = 'v ' + (res.etaMax <= 1 ? 'ok' : 'bad');
+
+  const ms = [];
+  res.naoRealizadas.forEach(m => ms.push('<div class="note e" style="margin:6px 0"><b>NÃO REALIZADA:</b> ' + m + '</div>'));
+  res.msgs.forEach(m => ms.push('<div class="note ' + m.t + '" style="margin:6px 0">' + m.m + '</div>'));
+  if(p && p.aviso) ms.push('<div class="note w" style="margin:6px 0">' + p.aviso + '</div>');
+  if(!ms.length) ms.push('<div class="mini">Nenhuma advertência.</div>');
+  $('#msgs').innerHTML = ms.join('');
+
+  const itens = Object.keys(res.util).map(k => ({ label:k, v:res.util[k] }));
+  plotBarras($('#cv_bar'), itens);
+
+  /* Área de influência */
+  const AItot = cfg.bw*(cfg.L/1000);
+  $('#ai_res').innerHTML = `
+    <h4>Resultados</h4>
+    <div class="kv"><span class="k">Largura de influência bw</span><span class="v">${fx(cfg.bw,2)} m</span></div>
+    <div class="kv"><span class="k">Comprimento da viga L</span><span class="v">${fx(cfg.L/1000,2)} m</span></div>
+    <div class="kv"><span class="k">Área de influência AI = bw × L</span><span class="v">${fx(AItot,2)} m²</span></div>
+    <div class="formula">AI = bw × L = ${fx(cfg.bw,2)} × ${fx(cfg.L/1000,2)} = <span class="hl">${fx(AItot,2)} m²</span></div>
+    <div class="kv"><span class="k">Carga permanente superficial total</span><span class="v">${fx(cfg.acoes.supG,2)} kN/m²</span></div>
+    <div class="kv"><span class="k">Carga variável superficial total</span><span class="v">${fx(cfg.acoes.supQ,2)} kN/m²</span></div>
+    <div class="kv"><span class="k">q<sub>g</sub> (linear, com PP)</span><span class="v">${fx(cfg.qg,2)} kN/m</span></div>
+    <div class="kv"><span class="k">q<sub>k</sub> (linear)</span><span class="v">${fx(cfg.qk,2)} kN/m</span></div>
+    <div class="formula">q = p × bw   →   q<sub>g</sub> = ${fx(cfg.acoes.supG,2)} × ${fx(cfg.bw,2)} + paredes + PP = <span class="hl">${fx(cfg.qg,2)} kN/m</span></div>
+  `;
+
+  $('#pp_info').innerHTML = p
+    ? `Massa linear: <b>${fx(p.massa,2)} kg/m</b> · q<sub>pp</sub> = ${fx(p.massa,2)} × 9,81/1000 = <b>${fx(p.massa*9.81/1000,3)} kN/m</b> · ${cfg.usarPP ? '<span class="tag ok">considerado</span>' : '<span class="tag wn">ignorado</span>'}`
+    : '—';
+
+  $('#an_comb').innerHTML = `
+    <h4>Combinações</h4>
+    ${['elu','carac','freq','qp','var'].map(k => {
+      const c = res.comb[k];
+      return `<div class="kv"><span class="k">${c.nome} — ${c.desc}</span><span class="v">${fx(c.q,2)} kN/m</span></div>`;
+    }).join('')}
+    <div class="mini" style="margin-top:6px">γg = ${fx(cfg.gg,2)} · γq = ${fx(cfg.gq,2)} · ψ1 = ${fx(cfg.psi1,2)} · ψ2 = ${fx(cfg.psi2,2)}</div>
+  `;
+
+  const A = res.A.elu;
+  $('#an_reac').innerHTML = `
+    <h4>Reações (ELU)</h4>
+    <div class="kv"><span class="k">R<sub>A</sub></span><span class="v">${fx(A.RA/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">R<sub>B</sub></span><span class="v">${fx(A.RB/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">Σ cargas verticais</span><span class="v">${fx((A.RA+A.RB)/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">V<sub>sd,máx</sub></span><span class="v">${fx(Math.max(Math.abs(A.Vmax),Math.abs(A.Vmin))/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">M<sub>sd,máx</sub></span><span class="v">${fx(A.Mmax/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">Posição do M<sub>máx</sub></span><span class="v">${fx(A.MmaxPos/1000,2)} m</span></div>
+    <div class="formula">R<sub>A</sub> = qL/2 + ΣP(L−a)/L = <span class="hl">${fx(A.RA/1000,2)} kN</span>
+R<sub>B</sub> = qL/2 + ΣP·a/L   = <span class="hl">${fx(A.RB/1000,2)} kN</span>
+M(x) = R<sub>A</sub>·x − q·x²/2 − ΣP(x−a)
+V(x) = R<sub>A</sub> − q·x − ΣP</div>
+  `;
+
+  const xsM = A.xs.map(v => v/1000);
+  plot($('#cv_V'), {
+    title:'Cortante V(x) — ELU', xlabel:'x (m)', ylabel:'V (kN)',
+    series:[{ x:xsM, y:A.Vs.map(v=>v/1000), color:'#0b63ce' }],
+    hlines:[{ y:0, color:'#94a3b8', dash:[3,3] }]
+  });
+  plot($('#cv_M'), {
+    title:'Momento fletor M(x) — ELU', xlabel:'x (m)', ylabel:'M (kN·m)',
+    series:[{ x:xsM, y:A.Ms.map(v=>v/1e6), color:'#c2410c' }],
+    hlines:[{ y:0, color:'#94a3b8', dash:[3,3] },
+            { y:A.Mmax/1e6, color:'#b42318', dash:[6,4], label:'Msd = '+fx(A.Mmax/1e6,2)+' kN·m' }]
+  });
+  const Ac = res.A.carac;
+  plot($('#cv_d'), {
+    title:'Linha elástica δ(x) — ELS característica', xlabel:'x (m)', ylabel:'δ (mm)',
+    series:[{ x:Ac.xs.map(v=>v/1000), y:Ac.ds, color:'#0e9384' }],
+    hlines:[{ y:res.deltaLim, color:'#b42318', dash:[6,4], label:'δlim = '+fx(res.deltaLim,2)+' mm' },
+            { y:0, color:'#94a3b8', dash:[3,3] }]
+  });
+
+  const hInd = cfg.L/20;
+  $('#pre_altura').innerHTML = `
+    <h4>Regra prática de pré-dimensionamento <span class="tag pre">pré-dimensionamento</span></h4>
+    <div class="kv"><span class="k">Altura indicativa h ≈ L/20</span><span class="v">${fx(hInd,0)} mm</span></div>
+    <div class="kv"><span class="k">Altura real do perfil d</span><span class="v">${fx(p.d,0)} mm</span></div>
+    <div class="kv"><span class="k">Relação d / (L/20)</span><span class="v">${fx(p.d/hInd,2)}</span></div>
+    <div class="formula">h ≈ L/20 = ${fx(cfg.L/1000,2)} m / 20 = <span class="hl">${fx(hInd,0)} mm</span></div>
+    <div class="note w" style="margin-bottom:0">Regra prática de pré-dimensionamento — não substitui a verificação estrutural.</div>
+  `;
+
+  $('#pre_inercia').innerHTML = `
+    <h4>Inércia necessária <span class="tag norm">verificação normativa (ELS)</span></h4>
+    <div class="kv"><span class="k">δ admissível</span><span class="v">L/${cfg.nLim} = ${fx(res.deltaLim,2)} mm</span></div>
+    <div class="kv"><span class="k">δ calculada (ELS característica)</span><span class="v">${fx(res.deltaTotal,2)} mm</span></div>
+    <div class="kv"><span class="k">I necessária</span><span class="v">${fx(res.Inec/1e4,0)} cm⁴</span></div>
+    <div class="kv"><span class="k">Ix do perfil</span><span class="v">${fx(p.Ix/1e4,0)} cm⁴</span></div>
+    <div class="kv"><span class="k">Ix / I necessária</span><span class="v ${p.Ix >= res.Inec ? 'ok':'bad'}">${fx(p.Ix/res.Inec,2)}</span></div>
+    <div class="kv"><span class="k">Situação</span><span class="v ${p.Ix >= res.Inec ? 'ok':'bad'}">${p.Ix >= res.Inec ? 'ATENDE' : 'NÃO ATENDE'}</span></div>
+    <div class="formula">I<sub>nec</sub> = 5qL⁴ / (384·E·δ<sub>adm</sub>)     [carga uniforme]
+I<sub>nec</sub> = PL³ / (48·E·δ<sub>adm</sub>)      [carga central]
+Combinado: I<sub>nec</sub> = C / (E·δ<sub>adm</sub>) → <span class="hl">${fx(res.Inec/1e4,0)} cm⁴</span></div>
+  `;
+
+  const c = res.classif;
+  $('#fx_class').innerHTML = `
+    <h4>Classificação da seção <span class="tag norm">NBR 8800 Tab. F.1 / G.1</span></h4>
+    <div class="kv"><span class="k">Mesa: λ<sub>f</sub> = bf/(2tf)</span><span class="v">${fx(c.mesa.lam,2)}</span></div>
+    <div class="kv"><span class="k">λ<sub>p,mesa</sub> / λ<sub>r,mesa</sub></span><span class="v">${fx(c.mesa.lp,2)} / ${fx(c.mesa.lr,2)}</span></div>
+    <div class="kv"><span class="k">Classificação da mesa</span><span class="v">${c.mesa.cls}</span></div>
+    <div class="kv"><span class="k">Alma: λ<sub>w</sub> = h/tw</span><span class="v">${fx(c.alma.lam,2)} (h = ${fx(c.alma.h,1)} mm)</span></div>
+    <div class="kv"><span class="k">λ<sub>p,alma</sub> / λ<sub>r,alma</sub></span><span class="v">${fx(c.alma.lp,2)} / ${fx(c.alma.lr,2)}</span></div>
+    <div class="kv"><span class="k">Classificação da alma</span><span class="v">${c.alma.cls}</span></div>
+    <div class="kv"><span class="k">Seção global</span><span class="v"><b>${c.global}</b></span></div>
+    <div class="kv"><span class="k">Elemento que controla</span><span class="v">${c.controla}</span></div>
+  `;
+
+  const fl = res.flex;
+  $('#fx_res').innerHTML = `
+    <h4>Resistência à flexão <span class="tag norm">NBR 8800 Anexo G</span></h4>
+    <div class="kv"><span class="k">M<sub>pl</sub> = Zx·fy</span><span class="v">${fx(fl.Mpl/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">M<sub>r</sub> = Wx(fy − σr)</span><span class="v">${fx(fl.Mr/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">M<sub>sd</sub> (ELU)</span><span class="v">${fx(res.Msd/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">Resistência pela mesa (FLM)</span><span class="v">${fx(fl.FLM/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">Resistência pela alma (FLA)</span><span class="v">${fx(fl.FLA/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">Resistência por FLT</span><span class="v">${fx(fl.FLT/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k"><b>M<sub>rd</sub> final (menor)</b></span><span class="v"><b>${fx(fl.Mrd/1e6,2)} kN·m</b></span></div>
+    <div class="kv"><span class="k">Estado limite governante</span><span class="v">${fl.governa}</span></div>
+    <div class="kv"><span class="k">η<sub>M</sub> = M<sub>sd</sub>/M<sub>rd</sub></span><span class="v ${res.Msd/fl.Mrd<=1?'ok':'bad'}">${fx(res.Msd/fl.Mrd,3)}</span></div>
+    <div class="formula">M<sub>rd</sub> = min(M<sub>rd,FLM</sub> ; M<sub>rd,FLA</sub> ; M<sub>rd,FLT</sub>) / γ<sub>a1</sub>   (γ<sub>a1</sub> = 1,10)
+M<sub>rd</sub> = <span class="hl">${fx(fl.Mrd/1e6,2)} kN·m</span></div>
+  `;
+
+  const cs = res.cis;
+  $('#cs_res').innerHTML = `
+    <h4>Cisalhamento <span class="tag norm">NBR 8800 item 5.4</span></h4>
+    <div class="kv"><span class="k">h (altura da alma)</span><span class="v">${fx(c.alma.h,1)} mm</span></div>
+    <div class="kv"><span class="k">A<sub>w</sub> = h·tw</span><span class="v">${fx(cs.Aw/100,2)} cm²</span></div>
+    <div class="kv"><span class="k">k<sub>v</sub></span><span class="v">${fx(cs.kv,2)}</span></div>
+    <div class="kv"><span class="k">λ = h/tw</span><span class="v">${fx(cs.lam,2)}</span></div>
+    <div class="kv"><span class="k">λ<sub>p</sub> / λ<sub>r</sub></span><span class="v">${fx(cs.lamP,2)} / ${fx(cs.lamR,2)}</span></div>
+    <div class="kv"><span class="k">V<sub>pl</sub> = 0,60·A<sub>w</sub>·fy</span><span class="v">${fx(cs.Vpl/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">V<sub>rd</sub></span><span class="v">${fx(cs.Vrd/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">V<sub>sd</sub> (ELU)</span><span class="v">${fx(res.Vsd/1000,2)} kN</span></div>
+    <div class="kv"><span class="k">η<sub>V</sub> = V<sub>sd</sub>/V<sub>rd</sub></span><span class="v ${res.Vsd/cs.Vrd<=1?'ok':'bad'}">${fx(res.Vsd/cs.Vrd,3)}</span></div>
+    <div class="formula">V<sub>pl</sub> = 0,60 · A<sub>w</sub> · fy = 0,60 × ${fx(cs.Aw/100,2)} cm² × ${fx(cfg.fy,0)} MPa = <span class="hl">${fx(cs.Vpl/1000,2)} kN</span>
+Região: ${cs.regiao}
+V<sub>rd</sub> = <span class="hl">${fx(cs.Vrd/1000,2)} kN</span></div>
+  `;
+
+  $('#es_res').innerHTML = `
+    <h4>Flambagem lateral com torção <span class="tag norm">NBR 8800 G.2.2</span></h4>
+    <div class="kv"><span class="k">L<sub>b</sub> (comprimento destravado)</span><span class="v">${fx(cfg.Lb/1000,2)} m</span></div>
+    <div class="kv"><span class="k">L<sub>p</sub></span><span class="v">${fx(fl.Lp/1000,3)} m</span></div>
+    <div class="kv"><span class="k">L<sub>r</sub></span><span class="v">${fx(fl.Lr/1000,3)} m</span></div>
+    <div class="kv"><span class="k">β₁</span><span class="v">${fl.beta1.toExponential(4)} mm⁻¹</span></div>
+    <div class="kv"><span class="k">C<sub>b</sub> adotado</span><span class="v">${fx(res.Cb,3)}</span></div>
+    <div class="kv"><span class="k">C<sub>b</sub> calculado pelo diagrama</span><span class="v">${fx(res.CbAuto,3)}</span></div>
+    <div class="kv"><span class="k">M<sub>cr</sub> (se aplicável)</span><span class="v">${fl.Mcr ? fx(fl.Mcr/1e6,2)+' kN·m' : '—'}</span></div>
+    <div class="kv"><span class="k">Região</span><span class="v">${fl.regiao}</span></div>
+    <div class="kv"><span class="k">M<sub>rd</sub> na região</span><span class="v">${fx(fl.FLT/1e6,2)} kN·m</span></div>
+    <div class="kv"><span class="k">Comprimento máx. sem travamento</span><span class="v">${fx(res.Lmax/1000,3)} m</span></div>
+    <div class="formula">λ<sub>p</sub> = 1,76·ry·√(E/fy)      → L<sub>p</sub> = <span class="hl">${fx(fl.Lp/1000,3)} m</span>
+λ<sub>r</sub> = [1,38√(Iy·J)]/(ry·J·β₁) · √(1+√(1+27·Cw·β₁²/Iy))  → L<sub>r</sub> = <span class="hl">${fx(fl.Lr/1000,3)} m</span>
+β₁ = (fy−σr)·Wx/(E·J),  σr = 0,30·fy
+M<sub>cr</sub> = C<sub>b</sub>·(π/L<sub>b</sub>)·√[E·Iy·G·J + (πE/L<sub>b</sub>)²·Iy·C<sub>w</sub>]
+C<sub>b</sub> = 12,5·M<sub>máx</sub> / (2,5M<sub>máx</sub> + 3M<sub>A</sub> + 4M<sub>B</sub> + 3M<sub>C</sub>)</div>
+  `;
+
+  desenharMrdLb(cfg, res);
+
+  $('#fl_res').innerHTML = `
+    <h4>Estado limite de serviço <span class="tag norm">NBR 8800 Anexo C</span></h4>
+    <div class="kv"><span class="k">δ total (combinação característica)</span><span class="v">${fx(res.deltaTotal,2)} mm</span></div>
+    <div class="kv"><span class="k">δ limite total (L/${cfg.nLim})</span><span class="v">${fx(res.deltaLim,2)} mm</span></div>
+    <div class="kv"><span class="k">η<sub>δ</sub></span><span class="v ${res.deltaTotal<=res.deltaLim?'ok':'bad'}">${fx(res.deltaTotal/res.deltaLim,3)}</span></div>
+    <div class="kv"><span class="k">δ ações variáveis</span><span class="v">${fx(res.deltaVar,2)} mm</span></div>
+    <div class="kv"><span class="k">δ limite variáveis (L/${cfg.nLimV})</span><span class="v">${fx(res.deltaLimV,2)} mm</span></div>
+    <div class="kv"><span class="k">δ quase permanente</span><span class="v">${fx(res.deltaQP,2)} mm</span></div>
+    <div class="formula">δ(x) = q·x(L³−2Lx²+x³)/(24EI) + Σ carga concentrada (superposição)
+δ<sub>máx,uniforme</sub> = 5qL⁴/(384EI)
+δ<sub>máx,central</sub>   = PL³/(48EI)
+δ<sub>calc</sub> = <span class="hl">${fx(res.deltaTotal,2)} mm</span>  ≤  δ<sub>adm</sub> = <span class="hl">${fx(res.deltaLim,2)} mm</span></div>
+  `;
+
+  const cf = res.contraflecha;
+  $('#fl_camb').innerHTML = `
+    <h4>Contraflecha <span class="tag pre">avaliação</span></h4>
+    <div class="kv"><span class="k">Flecha devido às ações permanentes δ<sub>G</sub></span><span class="v">${fx(cf.deltaG,2)} mm</span></div>
+    <div class="kv"><span class="k">Limite adotado (L/${cfg.nLim})</span><span class="v">${fx(cf.limG,2)} mm</span></div>
+    <div class="kv"><span class="k">Necessidade de contraflecha</span><span class="v">${cf.necessaria ? 'Avaliar' : 'Não necessária'}</span></div>
+    <div class="kv"><span class="k">Contraflecha sugerida (referência)</span><span class="v">${fx(cf.sugerida,0)} mm</span></div>
+    <div class="note i" style="margin-bottom:0">A contraflecha é uma decisão de projeto. Não é requisito da NBR 8800:2024.</div>
+  `;
+
+  const spansL=[], dCalc=[], dLim=[];
+  const Lmax = Math.max(12, cfg.L/1000*1.6);
+  for(let Lv=2; Lv<=Lmax; Lv+=0.5){
+    const Lmm = Lv*1000;
+    const qs = res.comb.carac.q;
+    const pts = res.comb.carac.pts.map(x => ({ a:clamp(x.a,0,Lmm), P:x.P }));
+    const a = analiseElastica(Lmm, qs, pts, cfg.E*p.Ix);
+    spansL.push(Lv); dCalc.push(a.dmax); dLim.push(Lmm/cfg.nLim);
+  }
+  plot($('#cv_dL'), {
+    title:'Flecha × vão', xlabel:'Vão (m)', ylabel:'δ (mm)',
+    series:[
+      { x:spansL, y:dCalc, color:'#0e9384' },
+      { x:spansL, y:dLim, color:'#b42318', dash:[6,4] }
+    ],
+    vlines:[{ x:cfg.L/1000, color:'#0b63ce', label:'L atual' }]
+  });
+
+  $('#vb_res').innerHTML = `
+    <h4>Frequência natural <span class="tag pre">preliminar</span></h4>
+    <div class="kv"><span class="k">Massa linear total considerada</span><span class="v">${fx(res.vib.m,1)} kg/m</span></div>
+    <div class="kv"><span class="k">Frequência natural f₁</span><span class="v">${fx(res.vib.f1,2)} Hz</span></div>
+    <div class="kv"><span class="k">Avaliação indicativa</span><span class="v">${res.vib.f1 >= 3 ? 'Acima de 3 Hz' : 'Abaixo de 3 Hz — investigar'}</span></div>
+    <div class="formula">f₁ = (π / 2L²)·√(E·I / m)   →   <span class="hl">${fx(res.vib.f1,2)} Hz</span></div>
+  `;
+
+  renderComparacao(cfg, res);
+  salvarLocal();
+}
+
+function desenharMrdLb(cfg, res){
+  const p = cfg.perfil;
+  const xs=[], ys=[];
+  const Lmax = Math.max(res.flex.Lr*1.8, cfg.Lb*1.5, 6000);
+  for(let i=0; i<=160; i++){
+    const Lb = 100 + (Lmax-100)*i/160;
+    const f = resistenciaFlexao(p, cfg, res.classif, res.Cb, Lb);
+    xs.push(Lb/1000); ys.push(f.Mrd/1e6);
+  }
+  plot($('#cv_Mrd'), {
+    title:'Momento resistente × comprimento destravado',
+    xlabel:'Lb (m)', ylabel:'Mrd (kN·m)',
+    series:[{ x:xs, y:ys, color:'#0b63ce' }],
+    hlines:[
+      { y:res.flex.Mpl/1.1e6, color:'#0e9384', dash:[6,4], label:'Mpl/γa1' },
+      { y:res.flex.Mr/1.1e6,  color:'#7c3aed', dash:[6,4], label:'Mr/γa1' },
+      { y:res.Msd/1e6,        color:'#c2410c', dash:[4,4], label:'Msd' }
+    ],
+    vlines:[
+      { x:res.flex.Lp/1000, color:'#0e9384', label:'Lp' },
+      { x:res.flex.Lr/1000, color:'#7c3aed', label:'Lr' },
+      { x:cfg.Lb/1000,      color:'#b42318', label:'Lb' }
+    ]
+  });
+}
+
+function renderComparacao(cfg, res){
+  /* varre todos os perfis do tipo atual */
+  const tipo = cfg.tipoPerfil;
+  let fonte, conv;
+  if(tipo === 'L'){ fonte = PERFIS_L; conv = r => normalizarL(r); }
+  else if(tipo === 'soldado'){ fonte = PERFIS_VS; conv = r => normalizarIH(r); }
+  else { fonte = PERFIS_IH_LAM; conv = r => normalizarIH(r); }
+
+  const linhas = [];
+  for(const reg of fonte){
+    const pf = conv(reg);
+    if(!pf.Ix) continue;
+    const r = analisarPerfilRapido(pf, cfg);
+    if(r) linhas.push(r);
+  }
+  linhas.sort((a,b) => a.massa - b.massa);
+
+  $('#cp_tbl').innerHTML = `
+    <table>
+      <thead><tr>
+        <th>Perfil</th><th>kg/m</th><th>Ix (cm⁴)</th><th>Wx (cm³)</th>
+        <th>Mrd (kN·m)</th><th>Vrd (kN)</th><th>δ (mm)</th><th>Lb máx (m)</th><th>η máx</th><th>Situação</th>
+      </tr></thead>
+      <tbody>
+      ${linhas.slice(0, 15).map(r => `
+        <tr>
+          <td>${r.nome}</td>
+          <td>${fx(r.massa,1)}</td>
+          <td>${fx(r.Ix/1e4,0)}</td>
+          <td>${fx(r.Wx/1e3,0)}</td>
+          <td>${fx(r.Mrd/1e6,2)}</td>
+          <td>${fx(r.Vrd/1000,2)}</td>
+          <td>${fx(r.delta,2)}</td>
+          <td>${fx(r.Lmax/1000,2)}</td>
+          <td class="${r.eta<=1?'':'bad'}">${fx(r.eta,2)}</td>
+          <td>${r.eta<=1?'<span class="tag ok">ATENDE</span>':'<span class="tag bad">NÃO ATENDE</span>'}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+
+  const vaos = [3,4,5,6,7,8,10];
+  const sel = cfg.perfil;
+  const cargas = vaos.map(Lv => buscaCargaMaxima(sel, cfg, Lv*1000));
+  $('#cp_vc').innerHTML = `
+    <table>
+      <thead><tr><th>Perfil</th>${vaos.map(v=>`<th>${v} m</th>`).join('')}</tr></thead>
+      <tbody><tr>
+        <td>${sel.nome}</td>
+        ${cargas.map(q => `<td>${q===null?'—':fx(q,2)}</td>`).join('')}
+      </tr></tbody>
+    </table>
+    <div class="mini" style="padding:6px 8px">Carga total máxima admissível (kN/m) — permanente + variável — considerando todas as verificações implementadas.</div>
+  `;
+
+  const xsG=[], ysG=[];
+  const LmaxG = Math.max(12, cfg.L/1000*1.6);
+  for(let Lv=2; Lv<=LmaxG; Lv+=0.25){
+    const q = buscaCargaMaxima(sel, cfg, Lv*1000);
+    if(q !== null){ xsG.push(Lv); ysG.push(q); }
+  }
+  plot($('#cv_cv'), {
+    title:'Carga admissível × vão — ' + sel.nome,
+    xlabel:'Vão (m)', ylabel:'q (kN/m)',
+    series:[{ x:xsG, y:ysG, color:'#0b63ce' }],
+    vlines:[{ x:cfg.L/1000, color:'#0e9384', label:'L atual' }]
+  });
+}
+
+function analisarPerfilRapido(p, cfg){
+  if(!p || !p.Ix || !p.Iy || !p.J || !p.Zx) return null;
+  const EI = cfg.E*p.Ix;
+  const comb = montarCombinacoes({
+    qg:cfg.qg, qk:cfg.qk, pts:cfg.pts,
+    gg:cfg.gg, gq:cfg.gq, psi1:cfg.psi1, psi2:cfg.psi2
+  });
+  const Aelu = analiseElastica(cfg.L, comb.elu.q, comb.elu.pts, EI);
+  const Acar = analiseElastica(cfg.L, comb.carac.q, comb.carac.pts, EI);
+  const Avar = analiseElastica(cfg.L, comb['var'].q, comb['var'].pts, EI);
+  const cls  = classificarSecao(p, cfg);
+  const flex = resistenciaFlexao(p, cfg, cls, Aelu.Cb, cfg.Lb);
+  const cis  = resistenciaCisalhamento(p, cfg, cls);
+
+  const etaM = Aelu.Mmax/flex.Mrd;
+  const etaV = Math.max(Math.abs(Aelu.Vmax),Math.abs(Aelu.Vmin))/cis.Vrd;
+  const etaD = Acar.dmax/(cfg.L/cfg.nLim);
+  const etaDv= Avar.dmax/(cfg.L/cfg.nLimV);
+  const etaMax = Math.max(etaM, etaV, etaD, etaDv);
+
+  return {
+    nome:p.nome, massa:p.massa, Ix:p.Ix, Wx:p.Wx,
+    Mrd:flex.Mrd, Vrd:cis.Vrd, delta:Acar.dmax,
+    Lmax:calcularLmaxSemTravamento(p, cfg, Aelu.Cb, Aelu.Mmax, flex),
+    eta:etaMax, etaM, etaV, etaD, etaDv,
+    perfil:p, flex, cis
+  };
+}
+
+function buscaCargaMaxima(p, cfg, L){
+  const base = { qg:cfg.qg, qk:cfg.qk };
+
+  function testa(fator){
+    const c2 = Object.assign({}, cfg, {
+      L:L,
+      qg:base.qg*fator,
+      qk:base.qk*fator,
+      pts:cfg.pts.map(x => ({
+        desc:x.desc,
+        a:clamp(x.a, 0, L),
+        pg:x.pg*fator,
+        pq:x.pq*fator
+      }))
+    });
+    const r = analisarPerfilRapido(p, c2);
+    if(!r) return false;
+    return r.eta <= 1;
+  }
+
+  if(!testa(1e-4)) return 0;
+  let lo = 1e-4, hi = 1;
+  let k = 0;
+  while(testa(hi) && k < 30){ lo = hi; hi *= 1.8; k++; }
+  if(k === 30) return null;
+  for(let i=0; i<40; i++){
+    const mid = (lo+hi)/2;
+    if(testa(mid)) lo = mid; else hi = mid;
+  }
+  return (base.qg+base.qk)*lo;
+}
+
+/* =========================================================================
+   MEMORIAL
+   ========================================================================= */
+function gerarMemorial(){
+  const res = ULTIMO || calcular();
+  const cfg = res.cfg;
+  const p = cfg.perfil;
+  if(!p) return '<p>Perfil não definido.</p>';
+
+  const c = res.classif, fl = res.flex, cs = res.cis;
+  const A = res.A.elu;
+
+  const linha = (k,v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+
+  let h = '';
+  h += `<div style="text-align:center;margin-bottom:14px">
+    <h2 style="font-size:16px">MEMORIAL DE CÁLCULO — VIGA METÁLICA</h2>
+    <div class="mini">APavan Perfil Metálico · ABNT NBR 8800:2024 (versão corrigida vigente)</div>
+  </div>`;
+
+  h += `<h3>1. Identificação</h3><table>
+    ${linha('Projeto',cfg.projeto.nome)}
+    ${linha('Elemento',cfg.projeto.elemento)}
+    ${linha('Viga',cfg.projeto.viga)}
+    ${linha('Pavimento',cfg.projeto.pav)}
+    ${linha('Data', new Date().toLocaleString('pt-BR'))}
+  </table>`;
+
+  h += `<h3>2. Material</h3><table>
+    ${linha('Aço', cfg.aco + (MATERIAIS[cfg.aco] ? '' : ' (personalizado)'))}
+    ${linha('fy', fx(cfg.fy,0)+' MPa')}
+    ${linha('fu', fx(cfg.fu,0)+' MPa')}
+    ${linha('E', fx(cfg.E,0)+' MPa')}
+    ${linha('G', fx(cfg.G,0)+' MPa')}
+    ${linha('γa1','1,10')}
+  </table>`;
+
+  h += `<h3>3. Geometria e propriedades do perfil</h3><table>
+    ${linha('Perfil', p.nome + (p.tipo === 'L' ? ' (tipo L)' : ''))}
+    ${linha('Massa linear', fx(p.massa,2)+' kg/m')}
+    ${linha('d', fx(p.d,1)+' mm')}
+    ${linha('bf', fx(p.bf,1)+' mm')}
+    ${linha('tf', fx(p.tf,1)+' mm')}
+    ${linha('tw', fx(p.tw,1)+' mm')}
+    ${linha('A', fx(p.A,2)+' cm²')}
+    ${linha('Ix', fx(p.Ix/1e4,0)+' cm⁴')}
+    ${linha('Iy', fx(p.Iy/1e4,0)+' cm⁴')}
+    ${linha('Wx', fx(p.Wx/1e3,1)+' cm³')}
+    ${linha('Wy', fx(p.Wy/1e3,1)+' cm³')}
+    ${linha('Zx', fx(p.Zx/1e3,1)+' cm³')}
+    ${linha('J', fx(p.J/1e4,2)+' cm⁴')}
+    ${linha('Cw', fx(p.Cw/1e6,0)+' cm⁶')}
+    ${linha('rx', fx(p.rx/10,2)+' cm')}
+    ${linha('ry', fx(p.ry/10,2)+' cm')}
+  </table>`;
+
+  h += `<h3>4. Ações</h3><table>
+    ${linha('Peso próprio da laje', fx(cfg.acoes.laje,2)+' kN/m²')}
+    ${linha('Revestimentos', fx(cfg.acoes.rev,2)+' kN/m²')}
+    ${linha('Forro', fx(cfg.acoes.forro,2)+' kN/m²')}
+    ${linha('Instalações', fx(cfg.acoes.inst,2)+' kN/m²')}
+    ${linha('Paredes (linear)', fx(cfg.acoes.parede,2)+' kN/m')}
+    ${linha('<b>Total permanente superficial</b>','<b>'+fx(cfg.acoes.supG,2)+' kN/m²</b>')}
+    ${linha('Sobrecarga de utilização', fx(cfg.acoes.util,2)+' kN/m²')}
+    ${linha('<b>Total variável superficial</b>','<b>'+fx(cfg.acoes.supQ,2)+' kN/m²</b>')}
+    ${linha('Largura de influência', fx(cfg.bw,2)+' m')}
+    ${linha('Peso próprio da viga', fx(cfg.qpp,3)+' kN/m'+(cfg.usarPP?'':' (ignorado)'))}
+    ${linha('<b>q<sub>g</sub></b>','<b>'+fx(cfg.qg,2)+' kN/m</b>')}
+    ${linha('<b>q<sub>k</sub></b>','<b>'+fx(cfg.qk,2)+' kN/m</b>')}
+  </table>`;
+
+  h += `<h3>5. Combinações</h3><table>
+    ${linha('ELU (normal)', res.comb.elu.desc+' = '+fx(res.comb.elu.q,2)+' kN/m')}
+    ${linha('ELS característica', res.comb.carac.desc+' = '+fx(res.comb.carac.q,2)+' kN/m')}
+    ${linha('ELS frequente', res.comb.freq.desc+' = '+fx(res.comb.freq.q,2)+' kN/m')}
+    ${linha('ELS quase permanente', res.comb.qp.desc+' = '+fx(res.comb.qp.q,2)+' kN/m')}
+    ${linha('Somente variáveis', res.comb['var'].desc+' = '+fx(res.comb['var'].q,2)+' kN/m')}
+  </table>
+  <pre>γg = ${fx(cfg.gg,2)}   γq = ${fx(cfg.gq,2)}   ψ1 = ${fx(cfg.psi1,2)}   ψ2 = ${fx(cfg.psi2,2)}</pre>`;
+
+  h += `<h3>6. Análise estrutural (ELU)</h3><table>
+    ${linha('Vão L', fx(cfg.L/1000,3)+' m')}
+    ${linha('Tipo de apoio','Simplesmente apoiada (biapoiada)')}
+    ${linha('R<sub>A</sub>', fx(A.RA/1000,2)+' kN')}
+    ${linha('R<sub>B</sub>', fx(A.RB/1000,2)+' kN')}
+    ${linha('Σ vertical', fx((A.RA+A.RB)/1000,2)+' kN')}
+    ${linha('V<sub>sd,máx</sub>', fx(Math.max(Math.abs(A.Vmax),Math.abs(A.Vmin))/1000,2)+' kN')}
+    ${linha('M<sub>sd,máx</sub>', fx(A.Mmax/1e6,2)+' kN·m')}
+    ${linha('Posição de M<sub>máx</sub>', fx(A.MmaxPos/1000,3)+' m')}
+  </table>
+  <pre>R_A = qL/2 + ΣP(L−a)/L
+R_B = qL/2 + ΣP·a/L
+V(x) = R_A − q·x − ΣP(x≥a)
+M(x) = R_A·x − q·x²/2 − ΣP(x−a)</pre>`;
+
+  h += `<h3>7. Pré-dimensionamento <span class="tag pre">pré-dimensionamento</span></h3><table>
+    ${linha('Altura indicativa h ≈ L/20', fx(cfg.L/20,0)+' mm')}
+    ${linha('Altura real do perfil d', fx(p.d,0)+' mm')}
+    ${linha('δ admissível (L/'+cfg.nLim+')', fx(res.deltaLim,2)+' mm')}
+    ${linha('δ calculada', fx(res.deltaTotal,2)+' mm')}
+    ${linha('<b>I necessária</b>','<b>'+fx(res.Inec/1e4,0)+' cm⁴</b>')}
+    ${linha('Ix do perfil', fx(p.Ix/1e4,0)+' cm⁴')}
+    ${linha('Verificação Ix ≥ I<sub>nec</sub>', p.Ix >= res.Inec ? 'ATENDE' : 'NÃO ATENDE')}
+  </table>
+  <pre>I_nec = 5·q·L⁴ / (384·E·δ_adm)      [carga uniforme]
+I_nec = P·L³ / (48·E·δ_adm)         [carga central]
+Combinado: I_nec = C / (E · δ_adm)</pre>
+  <div class="note w">A altura indicativa h ≈ L/20 é regra prática de pré-dimensionamento e não constitui requisito da NBR 8800:2024.</div>`;
+
+  h += `<h3>8. Classificação da seção <span class="tag norm">NBR 8800 Tab. F.1 / G.1</span></h3><table>
+    ${linha('λ<sub>f</sub> = bf/(2tf)', fx(c.mesa.lam,3))}
+    ${linha('λ<sub>p,mesa</sub> = 0,38√(E/fy)', fx(c.mesa.lp,3))}
+    ${linha('λ<sub>r,mesa</sub> = 0,83√(E/(fy−σr))', fx(c.mesa.lr,3))}
+    ${linha('Classificação da mesa', c.mesa.cls)}
+    ${linha('λ<sub>w</sub> = h/tw', fx(c.alma.lam,3)+'  (h = '+fx(c.alma.h,1)+' mm)')}
+    ${linha('λ<sub>p,alma</sub>', fx(c.alma.lp,3))}
+    ${linha('λ<sub>r,alma</sub>', fx(c.alma.lr,3))}
+    ${linha('Classificação da alma', c.alma.cls)}
+    ${linha('<b>Seção global</b>','<b>'+c.global+'</b>')}
+  </table>`;
+
+  h += `<h3>9. Flexão — FLM, FLA e FLT <span class="tag norm">NBR 8800 Anexo G</span></h3><table>
+    ${linha('M<sub>pl</sub> = Zx·fy', fx(fl.Mpl/1e6,2)+' kN·m')}
+    ${linha('M<sub>r</sub> = Wx(fy − σr)', fx(fl.Mr/1e6,2)+' kN·m')}
+    ${linha('M<sub>rd,FLM</sub>', fx(fl.FLM/1e6,2)+' kN·m')}
+    ${linha('M<sub>rd,FLA</sub>', fx(fl.FLA/1e6,2)+' kN·m')}
+    ${linha('M<sub>rd,FLT</sub>', fx(fl.FLT/1e6,2)+' kN·m')}
+    ${linha('<b>M<sub>rd</sub> (mínimo)</b>','<b>'+fx(fl.Mrd/1e6,2)+' kN·m</b>')}
+    ${linha('Estado limite governante', fl.governa)}
+    ${linha('η<sub>M</sub>', fx(res.Msd/fl.Mrd,3)+(res.Msd/fl.Mrd<=1?' — ATENDE':' — NÃO ATENDE'))}
+  </table>`;
+
+  h += `<h3>10. Estabilidade lateral com torção <span class="tag norm">NBR 8800 G.2.2</span></h3><table>
+    ${linha('L<sub>b</sub>', fx(cfg.Lb/1000,3)+' m')}
+    ${linha('L<sub>p</sub>', fx(fl.Lp/1000,3)+' m')}
+    ${linha('L<sub>r</sub>', fx(fl.Lr/1000,3)+' m')}
+    ${linha('C<sub>b</sub> adotado', fx(res.Cb,3))}
+    ${linha('M<sub>cr</sub>', fl.Mcr ? fx(fl.Mcr/1e6,2)+' kN·m' : 'não aplicável')}
+    ${linha('Região', fl.regiao)}
+    ${linha('Comprimento máx. sem travamento', fx(res.Lmax/1000,3)+' m')}
+  </table>`;
+
+  h += `<h3>11. Cisalhamento <span class="tag norm">NBR 8800 item 5.4</span></h3><table>
+    ${linha('h', fx(c.alma.h,1)+' mm')}
+    ${linha('A<sub>w</sub>', fx(cs.Aw/100,2)+' cm²')}
+    ${linha('V<sub>pl</sub>', fx(cs.Vpl/1000,2)+' kN')}
+    ${linha('V<sub>rd</sub>', fx(cs.Vrd/1000,2)+' kN')}
+    ${linha('V<sub>sd</sub>', fx(res.Vsd/1000,2)+' kN')}
+    ${linha('η<sub>V</sub>', fx(res.Vsd/cs.Vrd,3)+(res.Vsd/cs.Vrd<=1?' — ATENDE':' — NÃO ATENDE'))}
+  </table>`;
+
+  h += `<h3>12. Estado limite de serviço</h3><table>
+    ${linha('δ total', fx(res.deltaTotal,2)+' mm')}
+    ${linha('δ limite total (L/'+cfg.nLim+')', fx(res.deltaLim,2)+' mm')}
+    ${linha('η<sub>δ</sub>', fx(res.deltaTotal/res.deltaLim,3)+(res.deltaTotal<=res.deltaLim?' — ATENDE':' — NÃO ATENDE'))}
+    ${linha('δ ações variáveis', fx(res.deltaVar,2)+' mm')}
+    ${linha('δ limite variáveis (L/'+cfg.nLimV+')', fx(res.deltaLimV,2)+' mm')}
+    ${linha('δ quase permanente', fx(res.deltaQP,2)+' mm')}
+    ${linha('δ devido às ações permanentes', fx(res.contraflecha.deltaG,2)+' mm')}
+    ${linha('Contraflecha', res.contraflecha.necessaria ? 'avaliar' : 'não necessária')}
+  </table>`;
+
+  h += `<h3>13. Vibração (preliminar)</h3><table>
+    ${linha('Massa linear', fx(res.vib.m,1)+' kg/m')}
+    ${linha('Frequência natural f₁', fx(res.vib.f1,2)+' Hz')}
+  </table>`;
+
+  h += `<h3>14. Resumo das verificações</h3>
+  <table>
+    <tr><td><b>Verificação</b></td><td><b>Solicitação</b></td><td><b>Resistência/Limite</b></td><td><b>η</b></td><td><b>Situação</b></td></tr>
+    <tr><td>Flexão</td><td>${fx(res.Msd/1e6,2)} kN·m</td><td>${fx(fl.Mrd/1e6,2)} kN·m</td><td>${fx(res.Msd/fl.Mrd,3)}</td><td>${res.Msd/fl.Mrd<=1?'ATENDE':'NÃO ATENDE'}</td></tr>
+    <tr><td>Cisalhamento</td><td>${fx(res.Vsd/1000,2)} kN</td><td>${fx(cs.Vrd/1000,2)} kN</td><td>${fx(res.Vsd/cs.Vrd,3)}</td><td>${res.Vsd/cs.Vrd<=1?'ATENDE':'NÃO ATENDE'}</td></tr>
+    <tr><td>Flecha total</td><td>${fx(res.deltaTotal,2)} mm</td><td>${fx(res.deltaLim,2)} mm</td><td>${fx(res.deltaTotal/res.deltaLim,3)}</td><td>${res.deltaTotal<=res.deltaLim?'ATENDE':'NÃO ATENDE'}</td></tr>
+    <tr><td>Flecha variável</td><td>${fx(res.deltaVar,2)} mm</td><td>${fx(res.deltaLimV,2)} mm</td><td>${fx(res.deltaVar/res.deltaLimV,3)}</td><td>${res.deltaVar<=res.deltaLimV?'ATENDE':'NÃO ATENDE'}</td></tr>
+    <tr><td>Inércia necessária</td><td>${fx(res.Inec/1e4,0)} cm⁴</td><td>${fx(p.Ix/1e4,0)} cm⁴</td><td>${fx(res.Inec/p.Ix,3)}</td><td>${p.Ix>=res.Inec?'ATENDE':'NÃO ATENDE'}</td></tr>
+  </table>`;
+
+  h += `<h3>15. Referência metodológica</h3>
+  <div class="note p">
+  "A metodologia de pré-dimensionamento foi inspirada no documento fornecido pelo usuário —
+  <b>Coletânea do Uso do Aço / Manual de Vãos e Cargas</b> — originalmente baseada na
+  ABNT NBR 8800:2008. Os critérios normativos do aplicativo foram atualizados para a
+  <b>ABNT NBR 8800:2024, versão corrigida vigente</b>."
+  </div>
+  <div class="mini">Catálogos: Skylight Estruturas Metálicas — Tabela de Perfis Laminados I e H;
+  Tabela de Perfis Soldados Série VS; cantoneiras de abas iguais.
+  Normas: ABNT NBR 8800:2024 · NBR 8681 · NBR 6120.</div>`;
+
+  h += `<h3>16. Limitações</h3><ul>
+    <li>Vigas biapoiadas de seção I/H duplamente simétrica fletidas em torno do eixo de maior inércia.</li>
+    <li>Seções tubulares, U e L exigem verificações específicas não contempladas nesta versão.</li>
+    <li>Zx, Zy, J e Cw do banco são calculados por expressões usuais de perfis I duplamente simétricos sem concordâncias.</li>
+    <li>Interação flexão–cortante–axial não acionada (força axial nula no modelo).</li>
+    <li>Análise de vibração preliminar — não substitui verificação dinâmica do piso.</li>
+    <li>Regimes de flambagem local elástica (λ &gt; λr) com forma simplificada.</li>
+  </ul>`;
+
+  return h;
+}
+
+/* =========================================================================
+   ABAS
+   ========================================================================= */
+const ABAS = [
+  ['projeto','Projeto'],['perfil','Perfil'],['acoes','Ações'],['ai','Área de Influência'],
+  ['analise','Análise'],['pre','Pré-dimensionamento'],['flexao','Flexão'],['cis','Cisalhamento'],
+  ['estab','Estabilidade'],['flecha','Flecha'],['vib','Vibração'],['comp','Comparação'],['mem','Memorial']
+];
+function montarAbas(){
+  const nav = $('#tabs');
+  nav.innerHTML = ABAS.map(([id,nome],i)=>
+    `<button class="tab${i===0?' on':''}" data-tab="${id}"><span class="n">${i+1}</span>${nome}</button>`
+  ).join('');
+  nav.addEventListener('click', e => {
+    const b = e.target.closest('.tab');
+    if(!b) return;
+    $$('.tab').forEach(t => t.classList.remove('on'));
+    $$('.panel').forEach(p => p.classList.remove('on'));
+    b.classList.add('on');
+    const pn = $('#tab-'+b.dataset.tab);
+    if(pn) pn.classList.add('on');
+    setTimeout(()=>render(), 10);
+  });
+}
+
+/* =========================================================================
+   SELECT DE PERFIS
+   ========================================================================= */
+function montarSelectPerfis(){
+  const sel = $('#pf_sel');
+  const tipo = $('#p_tipoPerfil').value;
+  let fonte, fonteTag;
+  if(tipo === 'L'){ fonte = PERFIS_L; fonteTag = 'L'; }
+  else if(tipo === 'soldado'){ fonte = PERFIS_VS; fonteTag = 'VS'; }
+  else { fonte = PERFIS_IH_LAM; fonteTag = 'IH'; }
+
+  sel.innerHTML = fonte.map((p,i)=>`<option value="i:${i}">${p[0]}</option>`).join('') +
+                  '<option value="__custom__">— Personalizado / outra seção —</option>';
+  sel.value = 'i:0';
+  sel.dataset.fonte = fonteTag;
+  sel.dispatchEvent(new Event('change'));
+}
+
+function preencherCamposPerfil(){
+  const sel = $('#pf_sel').value;
+  const tipo = $('#pf_sel').dataset.fonte || 'IH';
+
+  let reg, normalizado;
+  if(sel !== '__custom__'){
+    const idx = parseInt(sel.replace('i:',''), 10);
+    if(tipo === 'L')       reg = PERFIS_L[idx];
+    else if(tipo === 'VS') reg = PERFIS_VS[idx];
+    else                   reg = PERFIS_IH_LAM[idx];
+    if(reg){
+      normalizado = normalizarPerfil(reg, tipo === 'L' ? 'L' : 'IH');
+      $('#pf_d').value  = normalizado.d;
+      $('#pf_bf').value = normalizado.bf;
+      $('#pf_tf').value = normalizado.tf;
+      $('#pf_tw').value = normalizado.tw;
+      $('#pf_A').value  = normalizado.A;
+      $('#pf_massa').value = normalizado.massa;
+      $('#pf_Ix').value = (normalizado.Ix/1e4).toFixed(0);
+      $('#pf_Iy').value = (normalizado.Iy/1e4).toFixed(0);
+      $('#pf_Wx').value = (normalizado.Wx/1e3).toFixed(1);
+      $('#pf_Wy').value = (normalizado.Wy/1e3).toFixed(1);
+      $('#pf_rx').value = (normalizado.rx/10).toFixed(2);
+      $('#pf_ry').value = (normalizado.ry/10).toFixed(2);
+      $('#pf_Zx').value = (normalizado.Zx/1e3).toFixed(1);
+      $('#pf_Zy').value = (normalizado.Zy/1e3).toFixed(1);
+      $('#pf_J').value  = (normalizado.J/1e4).toFixed(2);
+      $('#pf_Cw').value = (normalizado.Cw/1e6).toFixed(0);
+    }
+  }
+}
+
+/* =========================================================================
+   CARGAS CONCENTRADAS
+   ========================================================================= */
+function renderPontos(){
+  const tb = $('#tblPts').querySelector('tbody');
+  tb.innerHTML = S.pontos.map((p,i) => `
+    <tr>
+      <td><input data-i="${i}" data-k="desc" value="${p.desc}" style="width:100%;border:1px solid #d8e0ec;border-radius:6px;padding:4px 6px"></td>
+      <td><input data-i="${i}" data-k="a" type="number" step="0.01" value="${p.a}" style="width:100%;border:1px solid #d8e0ec;border-radius:6px;padding:4px 6px"></td>
+      <td><input data-i="${i}" data-k="pg" type="number" step="0.1" value="${p.pg}" style="width:100%;border:1px solid #d8e0ec;border-radius:6px;padding:4px 6px"></td>
+      <td><input data-i="${i}" data-k="pq" type="number" step="0.1" value="${p.pq}" style="width:100%;border:1px solid #d8e0ec;border-radius:6px;padding:4px 6px"></td>
+      <td><button class="btn sec" data-del="${i}" style="padding:4px 8px">✕</button></td>
+    </tr>`).join('');
+
+  tb.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const i = +inp.dataset.i, k = inp.dataset.k;
+      S.pontos[i][k] = (k === 'desc') ? inp.value : num(inp.value, 0);
+      render();
+    });
+  });
+  tb.querySelectorAll('[data-del]').forEach(b => {
+    b.addEventListener('click', () => {
+      S.pontos.splice(+b.dataset.del, 1);
+      renderPontos(); render();
+    });
+  });
+}
+
+/* =========================================================================
+   PERSISTÊNCIA
+   ========================================================================= */
+const LS_KEY = 'apavan_perfil_metalico_v2';
+
+function coletarValores(){
+  const d = {};
+  $$('input,select,textarea').forEach(el => {
+    if(!el.id) return;
+    if(el.type === 'checkbox') d[el.id] = el.checked;
+    else d[el.id] = el.value;
+  });
+  d.__pontos = JSON.stringify(S.pontos);
+  return d;
+}
+function aplicarValores(d){
+  if(!d) return;
+  Object.keys(d).forEach(k => {
+    if(k === '__pontos') return;
+    const el = document.getElementById(k);
+    if(!el) return;
+    if(el.type === 'checkbox') el.checked = !!d[k];
+    else el.value = d[k];
+  });
+  if(d.__pontos){
+    try { S.pontos = JSON.parse(d.__pontos); } catch(e){}
+  }
+  renderPontos();
+}
+function salvarLocal(){
+  try { localStorage.setItem(LS_KEY, JSON.stringify(coletarValores())); } catch(e){}
+}
+function carregarLocal(){
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) aplicarValores(JSON.parse(raw));
+  } catch(e){}
+}
+
+/* =========================================================================
+   IMPRESSÃO
+   ========================================================================= */
+function imprimirMemorial(){
+  const html = gerarMemorial();
+  const w = window.open('', '_blank');
+  if(!w){ alert('Permita pop-ups para imprimir o memorial.'); return; }
+  w.document.write(`<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+  <title>Memorial de Cálculo — APavan Perfil Metálico</title>
+  <style>
+    body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:11.5px;color:#0f172a;margin:24px;line-height:1.45}
+    h2{font-size:16px;margin:0}
+    h3{font-size:12.5px;color:#0b63ce;margin:18px 0 6px;border-bottom:2px solid #e6ecf5;padding-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+    table{width:100%;border-collapse:collapse;font-size:11px;margin:6px 0}
+    td,th{padding:4px 6px;border-bottom:1px solid #e2e8f0;text-align:left}
+    td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+    pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;background:#f5f8fc;padding:8px;border-radius:5px;white-space:pre-wrap;word-break:break-word;margin:6px 0}
+    .note{padding:8px 10px;border-radius:6px;background:#f5f8fc;border-left:3px solid #7c3aed;margin:8px 0;font-size:11px}
+    .note.w{background:#fff6e5;border-color:#b45309}
+    .mini{font-size:10.5px;color:#64748b}
+    .tag{display:inline-block;font-size:9px;font-weight:800;padding:1px 5px;border-radius:4px;background:#f3ecff;color:#7c3aed;text-transform:uppercase}
+    ul{margin:6px 0 6px 18px;padding:0}
+    li{margin:2px 0}
+    @media print{ body{margin:12mm} h3{page-break-after:avoid} table{page-break-inside:avoid} }
+  </style></head><body>${html}</body></html>`);
+  w.document.close();
+  setTimeout(()=>{ w.focus(); w.print(); }, 400);
+}
+
+/* =========================================================================
+   INICIALIZAÇÃO
+   ========================================================================= */
+function init(){
+  montarAbas();
+  montarSelectPerfis();
+  renderPontos();
+  carregarLocal();
+
+  document.addEventListener('input', e => {
+    if(e.target.closest('#memOut')) return;
+    clearTimeout(window.__tmr);
+    window.__tmr = setTimeout(render, 220);
+  });
+  document.addEventListener('change', e => {
+    if(e.target.closest('#memOut')) return;
+    clearTimeout(window.__tmr);
+    window.__tmr = setTimeout(render, 120);
+  });
+
+  $('#p_aco').addEventListener('change', () => {
+    const m = MATERIAIS[$('#p_aco').value];
+    if(m){ $('#p_fy').value = m.fy; $('#p_fu').value = m.fu; }
+  });
+
+  $('#p_tipoPerfil').addEventListener('change', () => {
+    montarSelectPerfis();
+    render();
+  });
+
+  $('#pf_sel').addEventListener('change', () => {
+    const v = $('#pf_sel').value;
+    const custom = (v === '__custom__');
+    ['pf_d','pf_bf','pf_tf','pf_tw','pf_A','pf_massa','pf_Ix','pf_Iy','pf_Wx','pf_Wy','pf_rx','pf_ry','pf_Zx','pf_Zy','pf_J','pf_Cw']
+      .forEach(id => {
+        $('#'+id).readOnly = !custom;
+        $('#'+id).style.background = custom ? '#fff' : '#f4f7fb';
+      });
+    if(!custom) preencherCamposPerfil();
+    render();
+  });
+
+  $('#btnAddPt').addEventListener('click', () => {
+    S.pontos.push({ desc:'Carga concentrada', a:3.00, pg:0, pq:0 });
+    renderPontos(); render();
+  });
+
+  $('#btnRecalcDer').addEventListener('click', () => {
+    const d = num($('#pf_d').value,0), bf = num($('#pf_bf').value,0),
+          tf = num($('#pf_tf').value,0), tw = num($('#pf_tw').value,0);
+    if(d>0 && bf>0 && tf>0 && tw>0){
+      const der = derivarGeometria(d,bf,tf,tw);
+      $('#pf_Zx').value = (der.Zx/1e3).toFixed(1);
+      $('#pf_Zy').value = (der.Zy/1e3).toFixed(1);
+      $('#pf_J').value  = (der.J/1e4).toFixed(2);
+      $('#pf_Cw').value = (der.Cw/1e6).toFixed(0);
+      render();
+    }
+  });
+
+  $('#btnRecalcGeo').addEventListener('click', () => {
+    const d = num($('#pf_d').value,0), bf = num($('#pf_bf').value,0),
+          tf = num($('#pf_tf').value,0), tw = num($('#pf_tw').value,0);
+    if(d>0 && bf>0 && tf>0 && tw>0){
+      const g = propriedadesGeometricas(d,bf,tf,tw);
+      $('#pf_A').value     = g.A.toFixed(2);
+      $('#pf_massa').value = g.massa.toFixed(2);
+      $('#pf_Ix').value    = g.Ix.toFixed(0);
+      $('#pf_Iy').value    = g.Iy.toFixed(0);
+      $('#pf_Wx').value    = g.Wx.toFixed(1);
+      $('#pf_Wy').value    = g.Wy.toFixed(1);
+      $('#pf_rx').value    = g.rx.toFixed(2);
+      $('#pf_ry').value    = g.ry.toFixed(2);
+      $('#pf_Zx').value    = g.Zx.toFixed(1);
+      $('#pf_Zy').value    = g.Zy.toFixed(1);
+      $('#pf_J').value     = g.J.toFixed(2);
+      $('#pf_Cw').value    = g.Cw.toFixed(0);
+      render();
+    }
+  });
+
+  $('#btnFind').addEventListener('click', () => {
+    const cfg = lerCfg();
+    const tipo = cfg.tipoPerfil;
+    let fonte, conv;
+    if(tipo === 'L'){ fonte = PERFIS_L; conv = r => normalizarL(r); }
+    else if(tipo === 'soldado'){ fonte = PERFIS_VS; conv = r => normalizarIH(r); }
+    else { fonte = PERFIS_IH_LAM; conv = r => normalizarIH(r); }
+
+    const out = [];
+    for(const reg of fonte){
+      const pf = conv(reg);
+      const r = analisarPerfilRapido(pf, cfg);
+      if(r && r.eta <= 1) out.push(r);
+    }
+    out.sort((a,b) => a.massa - b.massa);
+    const el = $('#pre_busca');
+    if(!out.length){
+      el.innerHTML = '<div class="note e">Nenhum perfil do banco atende a todos os critérios definidos. Aumente a seção, reduza o vão, reduza a carga ou reveja o comprimento destravado.</div>';
+      return;
+    }
+    const best = out[0];
+    el.innerHTML = `
+      <div class="note i"><b>Primeiro perfil da base que atende aos critérios definidos:</b>
+      <b style="color:#0b63ce">${best.nome}</b> — massa ${fx(best.massa,1)} kg/m · η máx = ${fx(best.eta,2)}.
+      <br><span class="mini">Ordenação por menor massa linear. Não se afirma que este seja o perfil ótimo global.</span></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>Perfil</th><th>kg/m</th><th>Ix (cm⁴)</th><th>Mrd (kN·m)</th><th>δ (mm)</th><th>η máx</th></tr></thead>
+        <tbody>${out.slice(0,10).map((r,i)=>`<tr>
+          <td>${i+1}</td><td>${r.nome}</td><td>${fx(r.massa,1)}</td><td>${fx(r.Ix/1e4,0)}</td>
+          <td>${fx(r.Mrd/1e6,2)}</td><td>${fx(r.delta,2)}</td><td>${fx(r.eta,2)}</td></tr>`).join('')}
+        </tbody></table></div>`;
+  });
+
+  $('#btnLimparBusca').addEventListener('click', () => { $('#pre_busca').innerHTML = ''; });
+
+  $('#btnGerarMem').addEventListener('click', () => {
+    $('#memOut').innerHTML = gerarMemorial();
+  });
+  $('#btnPrintMem').addEventListener('click', () => {
+    $('#memOut').innerHTML = gerarMemorial();
+    imprimirMemorial();
+  });
+
+  $('#btnSalvar').addEventListener('click', () => {
+    salvarLocal();
+    alert('Projeto salvo no armazenamento local do navegador.');
+  });
+  $('#btnCarregar').addEventListener('click', () => {
+    carregarLocal();
+    render();
+    alert('Projeto carregado do armazenamento local.');
+  });
+  $('#btnExport').addEventListener('click', () => {
+    const d = coletarValores();
+    const blob = new Blob([JSON.stringify(d, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'apavan-projeto-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  $('#btnImport').addEventListener('click', () => $('#fileImport').click());
+  $('#fileImport').addEventListener('change', e => {
+    const f = e.target.files[0];
+    if(!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      try { aplicarValores(JSON.parse(rd.result)); render(); alert('Projeto importado.'); }
+      catch(err){ alert('Arquivo JSON inválido.'); }
+    };
+    rd.readAsText(f);
+    e.target.value = '';
+  });
+  $('#btnPrint').addEventListener('click', () => {
+    $('#memOut').innerHTML = gerarMemorial();
+    imprimirMemorial();
+  });
+
+  /* PWA */
+  try {
+    const manifest = {
+      name:'APavan Perfil Metálico', short_name:'APavan',
+      description:'Análise e verificação de vigas metálicas — NBR 8800',
+      start_url:'.', display:'standalone',
+      background_color:'#eef2f7', theme_color:'#0b2545', icons:[]
+    };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:'application/manifest+json'}));
+    const lk = document.createElement('link');
+    lk.rel = 'manifest'; lk.href = url;
+    document.head.appendChild(lk);
+  } catch(e){}
+
+  render();
+  window.addEventListener('resize', () => {
+    clearTimeout(window.__rz);
+    window.__rz = setTimeout(render, 200);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
