@@ -3,8 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b2545">
-<title>APavan Perfil Metálico — Vigas de Aço NBR 8800</title>
+<meta name="theme-color" content="#0a3a6b">
+
+<!-- ===== iOS / PWA: nome e comportamento ao salvar na tela inicial ===== -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AP METÁLICA">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="AP METÁLICA">
+<meta name="format-detection" content="telephone=no">
+
+<title>AP METÁLICA — Vigas de Aço NBR 8800</title>
 <style>
 :root{
   --bg:#eef2f7; --card:#ffffff; --ink:#0f172a; --mut:#64748b; --line:#d8e0ec;
@@ -2218,6 +2227,133 @@ function imprimirMemorial(){
 }
 
 /* =========================================================================
+   ÍCONE "AP METÁLICA" — desenhado em canvas e injetado como PNG
+   (mesmo estilo visual do ícone "AP LAJES")
+   ========================================================================= */
+function gerarIconePNG(size){
+  const c = document.createElement('canvas');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+
+  /* --- fundo arredondado com gradiente azul --- */
+  const r = size * 0.22;
+  const grad = ctx.createLinearGradient(0, 0, 0, size);
+  grad.addColorStop(0.00, '#2c7bc4');
+  grad.addColorStop(0.45, '#155a9e');
+  grad.addColorStop(1.00, '#0a3a6b');
+
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size - r);
+  ctx.quadraticCurveTo(size, size, size - r, size);
+  ctx.lineTo(r, size);
+  ctx.quadraticCurveTo(0, size, 0, size - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  /* --- leve reflexo superior (dá profundidade como no ícone de referência) --- */
+  const refl = ctx.createLinearGradient(0, 0, 0, size * 0.5);
+  refl.addColorStop(0, 'rgba(255,255,255,0.18)');
+  refl.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size * 0.5);
+  ctx.lineTo(0, size * 0.5);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = refl;
+  ctx.fill();
+  ctx.restore();
+
+  /* --- configurações de texto --- */
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  /* "AP" — grande, bold, no topo */
+  ctx.font = 'bold ' + Math.round(size * 0.36) + 'px -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif';
+  ctx.fillText('AP', size / 2, size * 0.36);
+
+  /* "METÁLICA" — menor, abaixo */
+  ctx.font = '600 ' + Math.round(size * 0.105) + 'px -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif';
+  ctx.fillText('METÁLICA', size / 2, size * 0.605);
+
+  /* --- 5 pontos em azul claro, como no ícone de referência --- */
+  const nDots = 5;
+  const dotR  = size * 0.020;
+  const gap   = size * 0.070;
+  const totalW = (nDots - 1) * gap;
+  const startX = size / 2 - totalW / 2;
+  const dotY = size * 0.775;
+  ctx.fillStyle = '#7dc4f0';
+  for(let i = 0; i < nDots; i++){
+    ctx.beginPath();
+    ctx.arc(startX + i * gap, dotY, dotR, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  return c.toDataURL('image/png');
+}
+
+function instalarIcones(){
+  /* 1) Gera os PNGs em memória */
+  const url180 = gerarIconePNG(180);   // Apple touch icon (iPhone retina)
+  const url192 = gerarIconePNG(192);   // Android / PWA
+  const url512 = gerarIconePNG(512);   // Splash / alta resolução
+
+  /* 2) <link rel="apple-touch-icon"> — é o que o iOS usa ao "Adicionar à Tela Inicial" */
+  let l1 = document.querySelector('link[rel="apple-touch-icon"]');
+  if(!l1){ l1 = document.createElement('link'); l1.rel = 'apple-touch-icon'; document.head.appendChild(l1); }
+  l1.sizes = '180x180';
+  l1.href  = url180;
+
+  /* variante precomposed (iPhones mais antigos) */
+  let l2 = document.querySelector('link[rel="apple-touch-icon-precomposed"]');
+  if(!l2){ l2 = document.createElement('link'); l2.rel = 'apple-touch-icon-precomposed'; document.head.appendChild(l2); }
+  l2.sizes = '180x180';
+  l2.href  = url180;
+
+  /* 3) Favicon do navegador */
+  let fav = document.querySelector('link[rel="icon"]');
+  if(!fav){ fav = document.createElement('link'); fav.rel = 'icon'; document.head.appendChild(fav); }
+  fav.type  = 'image/png';
+  fav.sizes = '512x512';
+  fav.href  = url512;
+
+  /* 4) Manifest PWA com nome curto "AP METÁLICA" */
+  const manifest = {
+    name: 'AP METÁLICA',
+    short_name: 'AP METÁLICA',
+    description: 'APavan Perfil Metálico — Análise e verificação de vigas de aço (NBR 8800)',
+    start_url: '.',
+    scope: '.',
+    display: 'standalone',
+    orientation: 'portrait',
+    background_color: '#eef2f7',
+    theme_color: '#0a3a6b',
+    icons: [
+      { src: url192, sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: url512, sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: url512, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+  const mUrl = URL.createObjectURL(blob);
+  let mLink = document.querySelector('link[rel="manifest"]');
+  if(!mLink){ mLink = document.createElement('link'); mLink.rel = 'manifest'; document.head.appendChild(mLink); }
+  mLink.href = mUrl;
+}
+
+/* =========================================================================
    INICIALIZAÇÃO
    ========================================================================= */
 function init(){
@@ -2376,19 +2512,9 @@ function init(){
     imprimirMemorial();
   });
 
-  /* PWA */
-  try {
-    const manifest = {
-      name:'APavan Perfil Metálico', short_name:'APavan',
-      description:'Análise e verificação de vigas metálicas — NBR 8800',
-      start_url:'.', display:'standalone',
-      background_color:'#eef2f7', theme_color:'#0b2545', icons:[]
-    };
-    const url = URL.createObjectURL(new Blob([JSON.stringify(manifest)], {type:'application/manifest+json'}));
-    const lk = document.createElement('link');
-    lk.rel = 'manifest'; lk.href = url;
-    document.head.appendChild(lk);
-  } catch(e){}
+    /* PWA — gera ícones "AP METÁLICA" e injeta <link> tags */
+  instalarIcones();
+ 
 
   render();
   window.addEventListener('resize', () => {
